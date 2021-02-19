@@ -1,4 +1,5 @@
 using CinemaZ.Data;
+using CinemaZ.Service;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -42,6 +43,14 @@ namespace CinemaZ
                 .AddEntityFrameworkStores<ApplicationDbContext>();
 
             services.AddControllersWithViews();
+
+            services.AddSingleton<ISqlArticleService, SqlArticleService>();
+            services.AddSingleton<ISqlCinemaService, SqlCinemaService>();
+            services.AddSingleton<ISqlMovieRoomService, SqlMovieRoomService>();
+            services.AddSingleton<ISqlMovieService, SqlMovieService>();
+            services.AddSingleton<ISqlPremiereService, SqlPremiereService>();
+            services.AddSingleton<ISqlRoomService, SqlRoomService>();
+            services.AddSingleton<ISqlSeatService, SqlSeatService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

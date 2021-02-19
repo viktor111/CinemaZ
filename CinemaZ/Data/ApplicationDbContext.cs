@@ -24,6 +24,7 @@ namespace CinemaZ.Data
         {
             base.OnModelCreating(modelBuilder);
 
+            // Relations -------------------------------------------------
             // One to one premiere and movie
             modelBuilder.Entity<Movie>().HasKey(e => e.PremiereId);
 
@@ -55,6 +56,9 @@ namespace CinemaZ.Data
                 .HasOne(e => e.Room)
                 .WithMany(e => e.MovieRoom)
                 .HasForeignKey(e => e.RoomId);
+
+
+            
         }
 
         public DbSet<Cinema> Cinema {get; set; }

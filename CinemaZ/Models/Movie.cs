@@ -9,6 +9,8 @@ namespace CinemaZ.Models
     {
         public int Id { get; set; }
 
+        public CategoryType Category { get; set; }
+
         public Premiere Premiere { get; set; }
 
         public int? PremiereId { get; set; }
