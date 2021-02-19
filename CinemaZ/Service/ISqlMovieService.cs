@@ -16,6 +16,6 @@ namespace CinemaZ.Service
 
         List<Movie> ListMovies();
 
-        Movie EdditMovie();
+        Movie EdditMovie(Movie movie);
     }
 }

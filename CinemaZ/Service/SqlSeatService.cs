@@ -18,7 +18,11 @@ namespace CinemaZ.Service
 
         public Seat CreateSeat(Seat seat)
         {
-            throw new NotImplementedException();
+            _dbContext.Seat.Add(seat);
+
+            _dbContext.SaveChanges();
+
+            return new Seat();
         }
 
         public Seat DeleteSeat(Seat seat)
@@ -33,12 +37,12 @@ namespace CinemaZ.Service
 
         public Seat GetSeat(int id)
         {
-            throw new NotImplementedException();
+            return _dbContext.Seat.Where(s => s.Id == id).FirstOrDefault();
         }
 
         public List<Seat> ListSeats()
         {
-            throw new NotImplementedException();
+            return _dbContext.Seat.OrderBy(s => s.Row).ToList();
         }
     }
 }

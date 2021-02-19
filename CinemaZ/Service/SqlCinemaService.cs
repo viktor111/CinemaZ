@@ -18,27 +18,42 @@ namespace CinemaZ.Service
 
         public Cinema CreateCinema(Cinema cinema)
         {
-            throw new NotImplementedException();
+            _dbContext.Cinema.Add(cinema);
+
+            _dbContext.SaveChanges();
+
+            return new Cinema();
         }
 
         public Cinema DeleteCinema(Cinema cinema)
         {
-            throw new NotImplementedException();
+            _dbContext.Cinema.Remove(cinema);
+
+            _dbContext.SaveChanges();
+
+            return new Cinema();
         }
 
         public Cinema EdditCinema(Cinema cinema)
         {
-            throw new NotImplementedException();
+            Cinema cinemaToUpdate = _dbContext.Cinema.Where(c => c.Id == cinema.Id).FirstOrDefault();
+            cinemaToUpdate.Name = cinema.Name;
+            cinemaToUpdate.City = cinema.City;
+            cinemaToUpdate.Adress = cinema.Adress;
+
+            _dbContext.SaveChanges();
+
+            return new Cinema();
         }
 
         public Cinema GetCinema(int id)
         {
-            throw new NotImplementedException();
+            return _dbContext.Cinema.Where(c => c.Id == id).FirstOrDefault();
         }
 
         public List<Cinema> ListCinemas()
         {
-            throw new NotImplementedException();
+            return _dbContext.Cinema.OrderBy(c => c.City).ToList();
         }
     }
 }

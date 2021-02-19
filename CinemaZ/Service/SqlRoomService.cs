@@ -18,27 +18,43 @@ namespace CinemaZ.Service
 
         public Room CreateRoom(Room room)
         {
-            throw new NotImplementedException();
+            _dbContext.Room.Add(room);
+
+            _dbContext.SaveChanges();
+
+            return new Room();
         }
 
         public Room DeleteRoom(Room room)
         {
-            throw new NotImplementedException();
+            _dbContext.Remove(room);
+
+            _dbContext.SaveChanges();
+
+            return new Room();
         }
 
         public Room EdditRoom(Room room)
         {
-            throw new NotImplementedException();
+            Room roomToEdit = _dbContext.Room.Where(r => r.Id == room.Id).FirstOrDefault();
+
+            roomToEdit.MovieRoom = room.MovieRoom;
+            roomToEdit.Name = room.Name;
+            roomToEdit.Seats = room.Seats;
+            roomToEdit.CinemaId = room.CinemaId;
+            roomToEdit.Cinema = roomToEdit.Cinema;
+
+            return new Room();
         }
 
         public Room GetRoom(int id)
         {
-            throw new NotImplementedException();
+            return _dbContext.Room.Where(r => r.Id == id).FirstOrDefault();
         }
 
         public List<Room> ListRooms()
         {
-            throw new NotImplementedException();
+            return _dbContext.Room.OrderBy(r => r.Name).ToList();
         }
     }
 }

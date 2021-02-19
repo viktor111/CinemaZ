@@ -67,5 +67,6 @@ namespace CinemaZ.Data
         public DbSet<Seat> Seat { get; set; }
         public DbSet<Article> Article { get; set; }
         public DbSet<MovieRoom> MovieRoom { get; set; }
+        public DbSet<Premiere> Premiere { get; set; }
     }
 }

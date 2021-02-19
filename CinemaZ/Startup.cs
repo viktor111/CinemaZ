@@ -1,4 +1,5 @@
 using CinemaZ.Data;
+using CinemaZ.Helpers;
 using CinemaZ.Service;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -30,7 +31,7 @@ namespace CinemaZ
         {
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlServer(
-                    Configuration.GetConnectionString("Ip")));
+                    Configuration.GetConnectionString("DefaultConnection")));
 
             services.AddDatabaseDeveloperPageExceptionFilter();
 
@@ -44,13 +45,15 @@ namespace CinemaZ
 
             services.AddControllersWithViews();
 
-            services.AddSingleton<ISqlArticleService, SqlArticleService>();
-            services.AddSingleton<ISqlCinemaService, SqlCinemaService>();
-            services.AddSingleton<ISqlMovieRoomService, SqlMovieRoomService>();
-            services.AddSingleton<ISqlMovieService, SqlMovieService>();
-            services.AddSingleton<ISqlPremiereService, SqlPremiereService>();
-            services.AddSingleton<ISqlRoomService, SqlRoomService>();
-            services.AddSingleton<ISqlSeatService, SqlSeatService>();
+            services.AddScoped<ISqlArticleService, SqlArticleService>();
+            services.AddScoped<ISqlCinemaService, SqlCinemaService>();
+            services.AddScoped<ISqlMovieRoomService, SqlMovieRoomService>();
+            services.AddScoped<ISqlMovieService, SqlMovieService>();
+            services.AddScoped<ISqlPremiereService, SqlPremiereService>();
+            services.AddScoped<ISqlRoomService, SqlRoomService>();
+            services.AddScoped<ISqlSeatService, SqlSeatService>();
+
+            services.AddSingleton<ImageUpload>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
