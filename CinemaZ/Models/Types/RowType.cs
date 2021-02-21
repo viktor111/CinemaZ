@@ -14,6 +14,6 @@ namespace CinemaZ.Models.Types
         E,
         F,
         G,
-        H
+        H,
     }
 }

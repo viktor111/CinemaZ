@@ -45,13 +45,13 @@ namespace CinemaZ
 
             services.AddControllersWithViews();
 
-            services.AddScoped<ISqlArticleService, SqlArticleService>();
-            services.AddScoped<ISqlCinemaService, SqlCinemaService>();
-            services.AddScoped<ISqlMovieRoomService, SqlMovieRoomService>();
-            services.AddScoped<ISqlMovieService, SqlMovieService>();
-            services.AddScoped<ISqlPremiereService, SqlPremiereService>();
-            services.AddScoped<ISqlRoomService, SqlRoomService>();
-            services.AddScoped<ISqlSeatService, SqlSeatService>();
+            services.AddScoped<SqlArticleService>();
+            services.AddScoped<SqlCinemaService>();
+            services.AddScoped<SqlMovieRoomService>();
+            services.AddScoped<SqlMovieService>();
+            services.AddScoped<SqlPremiereService>();
+            services.AddScoped<SqlRoomService>();
+            services.AddScoped<SqlSeatService>();
 
             services.AddSingleton<ImageUpload>();
         }

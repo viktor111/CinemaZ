@@ -15,7 +15,5 @@ namespace CinemaZ.Models.Types
         o,
         p,
         q,
-        r,
-        s
     }
 }

@@ -40,6 +40,7 @@ namespace CinemaZ.Service
             cinemaToUpdate.Name = cinema.Name;
             cinemaToUpdate.City = cinema.City;
             cinemaToUpdate.Adress = cinema.Adress;
+            cinemaToUpdate.TimeClose = cinema.TimeClose;
 
             _dbContext.SaveChanges();
 
