@@ -1,6 +1,7 @@
 ﻿using CinemaZ.Data;
 using CinemaZ.Models;
 using CinemaZ.Models.Types;
+using CinemaZ.Modelsd;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,42 +11,27 @@ namespace CinemaZ.Service
     public class SqlRoomService : ISqlRoomService
     {
         private ApplicationDbContext _dbContext;
+        private SqlSeatService _sqlSeatService;
 
-        public SqlRoomService(ApplicationDbContext dbContext)
+        public SqlRoomService
+            (
+            ApplicationDbContext dbContext,
+            SqlSeatService sqlSeatService
+            )
         {
             _dbContext = dbContext;
+            _sqlSeatService = sqlSeatService;
         }
 
         public Room CreateRoom(Room room)
         {
-            List<Seat> newSeats = new();
-
-            string[] rows = Enum.GetNames(typeof(RowType));
-            string[] cols = Enum.GetNames(typeof(ColumnType));
-
-            for (int i = 0; i < 63; i++)
-            {
-                string row = rows[i];
-                Seat seat = new();
-
-                seat.Room = room;
-                seat.Row = (RowType)Enum.Parse(typeof(RowType), row);
-
-                for (int j = 0; j < row.Length; j++)
-                {
-                    string col = cols[j];
-
-                    seat.Column = (ColumnType)Enum.Parse(typeof(ColumnType), col);
-                    
-                    newSeats.Add(seat);
-                }               
-            }
+            List<Seat> newSeats = _sqlSeatService.GenerateSeats(room);
 
             room.Seats = newSeats;
 
             _dbContext.Room.Add(room);
 
-            _dbContext.SaveChanges();
+            //_dbContext.SaveChanges();
 
             return new Room();
         }

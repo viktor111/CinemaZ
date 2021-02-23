@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using CinemaZ.ViewModels;
+using CinemaZ.Modelsd;
 
 namespace CinemaZ.Data
 {
@@ -69,6 +70,5 @@ namespace CinemaZ.Data
         public DbSet<Article> Article { get; set; }
         public DbSet<MovieRoom> MovieRoom { get; set; }
         public DbSet<Premiere> Premiere { get; set; }
-        public DbSet<CinemaZ.ViewModels.CinemaCreateViewModel> CinemaCreateViewModel { get; set; }
     }
 }

@@ -2,6 +2,7 @@
 using CinemaZ.Service;
 using CinemaZ.ViewModels;
 using Microsoft.AspNetCore.Mvc;
+using System.Collections.Generic;
 
 namespace CinemaZ.Controllers
 {
@@ -35,27 +36,33 @@ namespace CinemaZ.Controllers
         [HttpPost]
         public IActionResult CreateCinema(CinemaCreateViewModel model)
         {
+            List<Room> newRooms = new();
+
             Cinema cinema = new();
 
             cinema.Name = model.Name;
             cinema.TimeClose = model.TimeClose;
-            cinema.Adress = model.Adress;         
-
+            cinema.Adress = model.Adress;
+            Room room = new();
             for (int i = 0; i < model.RoomCount; i++)
             {
-                Room room = new();
+                
 
                 room.Name = i.ToString();
-                room.Cinema = cinema;
+                room.Cinema = cinema;                
                 
                 _sqlRoomService.CreateRoom(room);
 
-                cinema.Rooms.Add(room);
+                newRooms.Add(room);
+
+                room = new();
             }
+
+            cinema.Rooms = newRooms;
 
             _sqlCinemaService.CreateCinema(cinema);
 
-            return RedirectToAction(nameof(Index));
+            return RedirectToAction(nameof(CreateCinema));
         }
     }
 }

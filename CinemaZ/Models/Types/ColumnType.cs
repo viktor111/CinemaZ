@@ -7,7 +7,16 @@ namespace CinemaZ.Models.Types
 {
     public enum ColumnType
     {
-        j,
+        //a,
+        //b,
+        //c,
+        //d,
+        //e,
+        //f,
+        //g,
+        //h,
+        //i,
+        //j,
         k,
         l,
         m,
@@ -15,5 +24,14 @@ namespace CinemaZ.Models.Types
         o,
         p,
         q,
+        r,
+        s,
+        t,
+        u,
+        v,
+        w,
+        x,
+        y,
+        z
     }
 }

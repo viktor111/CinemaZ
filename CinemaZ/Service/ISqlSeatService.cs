@@ -1,4 +1,5 @@
 ﻿using CinemaZ.Models;
+using CinemaZ.Modelsd;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,5 +18,7 @@ namespace CinemaZ.Service
         List<Seat> ListSeats();
 
         Seat EdditSeat(Seat seat);
+
+        List<Seat> GenerateSeats(Room room);
     }
 }

@@ -4,14 +4,16 @@ using CinemaZ.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace CinemaZ.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20210222132614_AddSeatTaken")]
+    partial class AddSeatTaken
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -164,13 +166,13 @@ namespace CinemaZ.Data.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int>("ColumnId")
+                    b.Property<int>("Column")
                         .HasColumnType("int");
 
                     b.Property<int>("RoomId")
                         .HasColumnType("int");
 
-                    b.Property<int>("RowId")
+                    b.Property<int>("Row")
                         .HasColumnType("int");
 
                     b.Property<bool>("Taken")
