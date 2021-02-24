@@ -1,8 +1,5 @@
 ﻿using CinemaZ.Models;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace CinemaZ.Service
 {
@@ -17,5 +14,7 @@ namespace CinemaZ.Service
         List<Room> ListRooms();
 
         Room EdditRoom(Room room);
+
+        List<Seat> SeatsForSingleRoom(Room room);
     }
 }

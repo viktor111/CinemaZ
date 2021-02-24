@@ -1,11 +1,9 @@
 ﻿using CinemaZ.Data;
 using CinemaZ.Models;
 using CinemaZ.Models.Types;
-using CinemaZ.Modelsd;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 
 namespace CinemaZ.Service
 {

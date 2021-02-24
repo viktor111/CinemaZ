@@ -1,0 +1,14 @@
+﻿@using CinemaZ.Models
+
+@model Room
+
+@{
+}
+
+@foreach (var seat in Model.Seats)
+{
+    <p>Room Id: @seat.RoomId</p>
+    <p>Row:@seat.RowId</p>
+    <p>Col: @seat.ColumnId</p>
+    <hr />
+}

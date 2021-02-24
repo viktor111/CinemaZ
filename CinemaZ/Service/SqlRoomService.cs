@@ -1,8 +1,5 @@
 ﻿using CinemaZ.Data;
 using CinemaZ.Models;
-using CinemaZ.Models.Types;
-using CinemaZ.Modelsd;
-using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -66,6 +63,19 @@ namespace CinemaZ.Service
         public List<Room> ListRooms()
         {
             return _dbContext.Room.OrderBy(r => r.Name).ToList();
+        }
+
+        public List<Seat> SeatsForSingleRoom(Room room)
+        {
+            List<Seat> seats = new();
+
+            seats = _dbContext.Seat.
+                Where(s => s.RoomId == room.Id).
+                OrderBy(s => s.RowId).
+                ThenBy(s => s.ColumnId).
+                ToList();
+
+            return seats;
         }
     }
 }
