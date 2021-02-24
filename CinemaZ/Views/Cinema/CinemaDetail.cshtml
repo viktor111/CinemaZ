@@ -1,0 +1,10 @@
+﻿@model CinemaZ.ViewModels.CinemaDetailsModel 
+
+@{
+}
+<h1>Cinema Name: </h1>
+@foreach (var room in Model.Rooms)
+{
+    <p>Name: @room.Name</p>
+    <p>Id: @room.Id</p>
+}

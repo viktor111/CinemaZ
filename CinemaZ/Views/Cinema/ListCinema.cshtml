@@ -1,0 +1,10 @@
+﻿@model CinemaZ.ViewModels.CinemaListViewModel 
+@foreach (var cinema in Model.Cinemas)
+{
+    <a asp-controller="Cinema" asp-action="CinemaDetail" asp-route-id="@cinema.Id">
+        <p>@cinema.Name</p>
+    </a>
+
+    <p>@cinema.Adress</p>
+    <hr />
+} 

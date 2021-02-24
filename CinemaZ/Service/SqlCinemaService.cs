@@ -56,5 +56,12 @@ namespace CinemaZ.Service
         {
             return _dbContext.Cinema.OrderBy(c => c.City).ToList();
         }
+
+        public List<Room> ListRooms(Cinema cinema)
+        {
+            int id = cinema.Id;
+
+            return _dbContext.Room.Where(r => r.Id == id).ToList();
+        }
     }
 }

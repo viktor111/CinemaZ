@@ -22,9 +22,27 @@ namespace CinemaZ.Controllers
         }
 
         [HttpGet]
-        public IActionResult Index()
+        public IActionResult CinemaDetail(int id)
         {
-            return View();
+            Cinema cinema = _sqlCinemaService.GetCinema(id);
+
+            CinemaDetailsModel viewModel = new();
+
+            viewModel.Rooms = _sqlCinemaService.ListRooms(cinema);
+            viewModel.TimeClose = cinema.TimeClose;
+            viewModel.Name = cinema.Name;
+
+            return View(viewModel);
+        }
+
+        [HttpGet]
+        public IActionResult ListCinema()
+        {
+            CinemaListViewModel viewModel = new();
+
+            viewModel.Cinemas = _sqlCinemaService.ListCinemas();
+
+            return View(viewModel);
         }
 
         [HttpGet]
