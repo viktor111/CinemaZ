@@ -2,9 +2,9 @@
 
 @{
 }
-<h1>Cinema Name: </h1>
+<h1>Cinema Name: @Model.Name</h1>
 @foreach (var room in Model.Rooms)
 {
-    <p>Name: @room.Name</p>
+    <a asp-controller="Room" asp-action="Room" asp-route-id="@room.Id"><p>Name: @room.Name</p></a>
     <p>Id: @room.Id</p>
 }

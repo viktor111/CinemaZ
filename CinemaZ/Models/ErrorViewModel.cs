@@ -1,5 +1,3 @@
-using System;
-
 namespace CinemaZ.Models
 {
     public class ErrorViewModel

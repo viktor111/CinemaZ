@@ -9,7 +9,7 @@ namespace CinemaZ.Service
 {
     public class SqlSeatService : ISqlSeatService
     {
-        private ApplicationDbContext _dbContext;
+        private readonly ApplicationDbContext _dbContext;
 
         public SqlSeatService(ApplicationDbContext dbContext)
         {
@@ -74,7 +74,7 @@ namespace CinemaZ.Service
 
         public Seat GetSeat(int id)
         {
-            return _dbContext.Seat.Where(s => s.Id == id).FirstOrDefault();
+            return _dbContext.Seat.FirstOrDefault(s => s.Id == id);
         }
 
         public List<Seat> ListSeats()

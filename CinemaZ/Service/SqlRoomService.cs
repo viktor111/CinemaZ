@@ -7,8 +7,8 @@ namespace CinemaZ.Service
 {
     public class SqlRoomService : ISqlRoomService
     {
-        private ApplicationDbContext _dbContext;
-        private SqlSeatService _sqlSeatService;
+        private readonly ApplicationDbContext _dbContext;
+        private readonly SqlSeatService _sqlSeatService;
 
         public SqlRoomService
             (
@@ -44,7 +44,7 @@ namespace CinemaZ.Service
 
         public Room EdditRoom(Room room)
         {
-            Room roomToEdit = _dbContext.Room.Where(r => r.Id == room.Id).FirstOrDefault();
+            Room roomToEdit = _dbContext.Room.FirstOrDefault(r => r.Id == room.Id);
 
             roomToEdit.MovieRoom = room.MovieRoom;
             roomToEdit.Name = room.Name;
@@ -57,7 +57,7 @@ namespace CinemaZ.Service
 
         public Room GetRoom(int id)
         {
-            return _dbContext.Room.Where(r => r.Id == id).FirstOrDefault();
+            return _dbContext.Room.FirstOrDefault(r => r.Id == id);
         }
 
         public List<Room> ListRooms()

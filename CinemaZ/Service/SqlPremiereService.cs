@@ -1,15 +1,13 @@
 ﻿using CinemaZ.Data;
 using CinemaZ.Models;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 
 namespace CinemaZ.Service
 {
     public class SqlPremiereService : ISqlPremiereService
     {
-        private ApplicationDbContext _dbContext;
+        private readonly ApplicationDbContext _dbContext;
 
         public SqlPremiereService(ApplicationDbContext dbContext)
         {
@@ -36,7 +34,7 @@ namespace CinemaZ.Service
 
         public Premiere EdditPremiere(Premiere premiere)
         {
-            Premiere premiereToEdit = _dbContext.Premiere.Where(p => p.Id == premiere.Id).FirstOrDefault();
+            Premiere premiereToEdit = _dbContext.Premiere.FirstOrDefault(p => p.Id == premiere.Id);
 
             premiereToEdit.Movie = premiere.Movie;
             premiereToEdit.PremiereDate = premiere.PremiereDate;
@@ -48,7 +46,7 @@ namespace CinemaZ.Service
 
         public Premiere GetPremiere(int id)
         {
-            return _dbContext.Premiere.Where(p => p.Id == id).FirstOrDefault();
+            return _dbContext.Premiere.FirstOrDefault(p => p.Id == id);
         }
 
         public List<Premiere> ListPremieres()

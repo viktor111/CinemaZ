@@ -3,13 +3,12 @@ using CinemaZ.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 
 namespace CinemaZ.Service
 {
     public class SqlArticleService : ISqlArticleService
     {
-        private ApplicationDbContext _dbContext;
+        private readonly ApplicationDbContext _dbContext;
 
         public SqlArticleService(ApplicationDbContext dbContext)
         {
@@ -36,7 +35,7 @@ namespace CinemaZ.Service
 
         public Article EdditArticle(Article articleModel)
         {
-            Article articleToEdit = _dbContext.Article.Where(a => a.Id == articleModel.Id).FirstOrDefault();
+            Article articleToEdit = _dbContext.Article.FirstOrDefault(a => a.Id == articleModel.Id);
 
             articleToEdit.Date = DateTime.Now;
             articleToEdit.Text = articleModel.Text;
@@ -50,7 +49,7 @@ namespace CinemaZ.Service
 
         public Article GetArticle(int id)
         {
-            return _dbContext.Article.Where(a => a.Id == id).FirstOrDefault();
+            return _dbContext.Article.FirstOrDefault(a => a.Id == id);
         }
 
         public List<Article> ListArticles()

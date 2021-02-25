@@ -1,15 +1,13 @@
 ﻿using CinemaZ.Data;
 using CinemaZ.Models;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 
 namespace CinemaZ.Service
 {
     public class SqlMovieService : ISqlMovieService
     {
-        private ApplicationDbContext _dbContext;
+        private readonly ApplicationDbContext _dbContext;
 
         public SqlMovieService(ApplicationDbContext dbContext)
         {
@@ -36,7 +34,7 @@ namespace CinemaZ.Service
 
         public Movie EdditMovie(Movie movie)
         {
-            Movie movieToEdit = _dbContext.Movie.Where(m => m.Id == movie.Id).FirstOrDefault();
+            Movie movieToEdit = _dbContext.Movie.FirstOrDefault(m => m.Id == movie.Id);
 
             movieToEdit.Category = movie.Category;
             movieToEdit.MovieRating = movie.MovieRating;
@@ -53,7 +51,7 @@ namespace CinemaZ.Service
 
         public Movie GetMovie(int id)
         {
-            return _dbContext.Movie.Where(m => m.Id == id).FirstOrDefault();
+            return _dbContext.Movie.FirstOrDefault(m => m.Id == id);
         }
 
         public List<Movie> ListMovies()

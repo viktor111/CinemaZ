@@ -9,7 +9,7 @@ namespace CinemaZ.Service
 {
     public class SqlCinemaService : ISqlCinemaService
     {
-        private ApplicationDbContext _dbContext;
+        private readonly ApplicationDbContext _dbContext;
 
         public SqlCinemaService(ApplicationDbContext dbContext)
         {
@@ -36,7 +36,7 @@ namespace CinemaZ.Service
 
         public Cinema EdditCinema(Cinema cinema)
         {
-            Cinema cinemaToUpdate = _dbContext.Cinema.Where(c => c.Id == cinema.Id).FirstOrDefault();
+            Cinema cinemaToUpdate = _dbContext.Cinema.FirstOrDefault(c => c.Id == cinema.Id);
             cinemaToUpdate.Name = cinema.Name;
             cinemaToUpdate.City = cinema.City;
             cinemaToUpdate.Adress = cinema.Adress;
@@ -49,7 +49,7 @@ namespace CinemaZ.Service
 
         public Cinema GetCinema(int id)
         {
-            return _dbContext.Cinema.Where(c => c.Id == id).FirstOrDefault();
+            return _dbContext.Cinema.FirstOrDefault(c => c.Id == id);
         }
 
         public List<Cinema> ListCinemas()
@@ -61,7 +61,7 @@ namespace CinemaZ.Service
         {
             int id = cinema.Id;
 
-            return _dbContext.Room.Where(r => r.Id == id).ToList();
+            return _dbContext.Room.Where(r => r.CinemaId == id).ToList();
         }
     }
 }
