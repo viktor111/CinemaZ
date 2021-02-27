@@ -1,6 +1,7 @@
 ﻿using CinemaZ.Models;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+// ReSharper disable HeapView.BoxingAllocation
 
 namespace CinemaZ.Data
 {
@@ -53,9 +54,6 @@ namespace CinemaZ.Data
                 .HasOne(e => e.Room)
                 .WithMany(e => e.MovieRoom)
                 .HasForeignKey(e => e.RoomId);
-
-
-            
         }
 
         public DbSet<Cinema> Cinema {get; set; }

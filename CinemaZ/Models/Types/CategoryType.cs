@@ -1,4 +1,4 @@
-﻿namespace CinemaZ.Models
+﻿namespace CinemaZ.Models.Types
 {
     public enum CategoryType
     {

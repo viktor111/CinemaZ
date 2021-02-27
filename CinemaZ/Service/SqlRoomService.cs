@@ -28,8 +28,6 @@ namespace CinemaZ.Service
 
             _dbContext.Room.Add(room);
 
-            //_dbContext.SaveChanges();
-
             return new Room();
         }
 
@@ -45,7 +43,7 @@ namespace CinemaZ.Service
         public Room EdditRoom(Room room)
         {
             Room roomToEdit = _dbContext.Room.FirstOrDefault(r => r.Id == room.Id);
-
+    
             roomToEdit.MovieRoom = room.MovieRoom;
             roomToEdit.Name = room.Name;
             roomToEdit.Seats = room.Seats;

@@ -60,8 +60,6 @@ namespace CinemaZ.Service
 
                     _dbContext.Seat.Add(seat);
 
-                    //_dbContext.SaveChanges();
-
                     seat = new();
 
                     seat.RowId = (RowType)Enum.Parse(typeof(RowType), row);

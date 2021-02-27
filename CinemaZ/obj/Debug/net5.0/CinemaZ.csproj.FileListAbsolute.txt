@@ -441,3 +441,5 @@ D:\programming\c#\CinemaZ\CinemaZ\obj\Debug\net5.0\Razor\Views\Room\Room.cshtml.
 D:\programming\c#\CinemaZ\CinemaZ\bin\Debug\net5.0\appsettings.json
 D:\programming\c#\CinemaZ\CinemaZ\obj\Debug\net5.0\Razor\Views\Cinema\ListCinema.cshtml.g.cs
 D:\programming\c#\CinemaZ\CinemaZ\obj\Debug\net5.0\Razor\Views\Cinema\CinemaDetail.cshtml.g.cs
+D:\programming\c#\CinemaZ\CinemaZ\obj\Debug\net5.0\Razor\Views\Movie\CreateMovie.cshtml.g.cs
+D:\programming\c#\CinemaZ\CinemaZ\obj\Debug\net5.0\Razor\Views\Movie\Index.cshtml.g.cs

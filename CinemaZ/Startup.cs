@@ -1,5 +1,8 @@
+using System;
+using System.Threading.Tasks;
 using CinemaZ.Data;
 using CinemaZ.Helpers;
+using CinemaZ.Models;
 using CinemaZ.Service;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -51,7 +54,7 @@ namespace CinemaZ
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, IServiceProvider serviceProvider)
         {
             if (env.IsDevelopment())
             {
@@ -69,6 +72,8 @@ namespace CinemaZ
 
             app.UseRouting();
 
+            //TestService(serviceProvider).Wait();
+            
             app.UseAuthentication();
             app.UseAuthorization();
 
@@ -80,5 +85,27 @@ namespace CinemaZ
                 endpoints.MapRazorPages();
             });
         }
+
+        /*private async Task TestService(IServiceProvider serviceProvider)
+        {
+            SqlRoomService sqlRoomService = serviceProvider.GetRequiredService<SqlRoomService>();
+            SqlMovieService sqlMovieService = serviceProvider.GetRequiredService<SqlMovieService>();
+            SqlMovieRoomService sqlMovieRoomService = serviceProvider.GetRequiredService<SqlMovieRoomService>();
+
+            Movie movieTest = new Movie()
+            {
+                Category = CategoryType.Action,
+                Name = "New Movie  test",
+                Price = 2.34M,
+                ReleaseDate = DateTime.Now,
+                PremiereId = 8
+            };
+
+            Room roomTest = sqlRoomService.GetRoom(2);
+
+            sqlMovieService.CreateMovie(movieTest);
+            
+            sqlMovieRoomService.AddMovieToRoom(movieTest, roomTest);
+        } */
     }
 }
