@@ -1,0 +1,35 @@
+﻿@model CinemaZ.ViewModels.MovieToRoomViewModel
+
+@{
+    ViewBag.Title = "title";
+    Layout = "_Layout";
+}
+
+<h2>Add Movie To Room</h2>
+
+<form asp-controller="Movie" asp-action="AddMovieToRoom">
+     <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+    <div class="form-group">
+        <label asp-for="MovieName" class="control-label"></label>
+        <select asp-for="MovieName" asp-items="Model.Movies" class="form-control"></select>
+        <span asp-validation-for="MovieName" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="RoomName" class="control-label"></label>
+        <select asp-for="RoomName" asp-items="Model.Rooms" class="form-control"></select>
+        <span asp-validation-for="RoomName" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="AirTime" class="control-label"></label>
+        <input type="date" asp-for="AirTime" class="form-control" />
+        <span asp-validation-for="AirTime" class="text-danger"></span>
+    </div>
+    
+    <div class="form-group">
+        <input type="submit" value="Create" class="btn btn-primary" />
+    </div>
+</form>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

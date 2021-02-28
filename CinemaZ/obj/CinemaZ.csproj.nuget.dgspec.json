@@ -14,7 +14,7 @@
         "outputPath": "D:\\programming\\c#\\CinemaZ\\CinemaZ\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
-          "D:\\Microsoft\\Xamarin\\NuGet"
+          "D:\\Microsoft\\Xamarin\\NuGet\\"
         ],
         "configFilePaths": [
           "C:\\Users\\varti\\AppData\\Roaming\\NuGet\\NuGet.Config",

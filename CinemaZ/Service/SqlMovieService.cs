@@ -54,6 +54,11 @@ namespace CinemaZ.Service
             return _dbContext.Movie.FirstOrDefault(m => m.Id == id);
         }
 
+        public Movie GetMovieByName(string name)
+        {
+            return _dbContext.Movie.FirstOrDefault(m => m.Name == name);
+        }
+
         public List<Movie> ListMovies()
         {
             return _dbContext.Movie.OrderBy(m => m.ReleaseDate).ToList();

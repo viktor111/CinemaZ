@@ -1,6 +1,7 @@
 ﻿using System.Linq;
 using CinemaZ.Data;
 using CinemaZ.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace CinemaZ.Service
 {
@@ -13,18 +14,24 @@ namespace CinemaZ.Service
             _dbContext = dbContext;
         }
 
-        public Movie AddMovieToRoom(Movie movie, Room room)
+        public MovieRoom AddMovieToRoom(MovieRoom movieRoom)
         {
-            Room roomDb = _dbContext.Room.FirstOrDefault(r => r.Id == room.Id);
-            MovieRoom movieRoom = _dbContext.MovieRoom.FirstOrDefault(mr => mr.RoomId == room.Id);
-            
-            roomDb.MovieRoom.Add(new MovieRoom
+            Room roomDb = _dbContext.Room.Where(r => r.Id == movieRoom.RoomId).Include(r => r.MovieRoom).FirstOrDefault();
+            if (roomDb is not null)
             {
-                MovieId = movie.Id,
-                AirTime = movie.ReleaseDate
-            });
+                MovieRoom movieRoomDb = roomDb.MovieRoom.FirstOrDefault(mr => mr.RoomId == movieRoom.RoomId);
             
-            return new Movie();
+                roomDb.MovieRoom.Add(new MovieRoom
+                {
+                    MovieId = movieRoom.MovieId
+                });
+
+                if (movieRoomDb is not null) movieRoomDb.AirTime = movieRoom.AirTime;
+            }
+
+            _dbContext.SaveChanges();
+            
+            return new MovieRoom();
         }
     }
 }

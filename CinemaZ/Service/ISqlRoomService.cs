@@ -7,6 +7,8 @@ namespace CinemaZ.Service
     {
         Room GetRoom(int id);
 
+        Room GetRoomByName(string name);
+
         Room CreateRoom(Room room);
 
         Room DeleteRoom(Room room);

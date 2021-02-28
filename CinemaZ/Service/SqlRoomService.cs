@@ -58,6 +58,11 @@ namespace CinemaZ.Service
             return _dbContext.Room.FirstOrDefault(r => r.Id == id);
         }
 
+        public Room GetRoomByName(string name)
+        {
+            return _dbContext.Room.FirstOrDefault(r => r.Name == name);
+        }
+
         public List<Room> ListRooms()
         {
             return _dbContext.Room.OrderBy(r => r.Name).ToList();

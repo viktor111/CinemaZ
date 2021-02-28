@@ -64,9 +64,9 @@ namespace CinemaZ.Controllers
             Room room = new();
             for (int i = 0; i < model.RoomCount; i++)
             {
-                
 
-                room.Name = i.ToString();
+
+                room.Name = $"{i}:{cinema.Name}";
                 room.Cinema = cinema;                
                 
                 _sqlRoomService.CreateRoom(room);

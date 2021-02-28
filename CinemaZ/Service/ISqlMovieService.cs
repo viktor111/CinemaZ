@@ -10,6 +10,8 @@ namespace CinemaZ.Service
     {
         Movie GetMovie(int id);
 
+        Movie GetMovieByName(string name);
+
         Movie CreateMovie(Movie movie);
 
         Movie DeleteMovie(Movie movie);

@@ -24,7 +24,7 @@ namespace CinemaZ.Data
 
             // Relations -------------------------------------------------
             // One to one premiere and movie
-            modelBuilder.Entity<Movie>().HasKey(e => e.PremiereId);
+            modelBuilder.Entity<Movie>().HasKey(e => e.Id);
 
             modelBuilder.Entity<Premiere>()
                 .HasOne(e => e.Movie)

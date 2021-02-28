@@ -443,3 +443,4 @@ D:\programming\c#\CinemaZ\CinemaZ\obj\Debug\net5.0\Razor\Views\Cinema\ListCinema
 D:\programming\c#\CinemaZ\CinemaZ\obj\Debug\net5.0\Razor\Views\Cinema\CinemaDetail.cshtml.g.cs
 D:\programming\c#\CinemaZ\CinemaZ\obj\Debug\net5.0\Razor\Views\Movie\CreateMovie.cshtml.g.cs
 D:\programming\c#\CinemaZ\CinemaZ\obj\Debug\net5.0\Razor\Views\Movie\Index.cshtml.g.cs
+D:\programming\c#\CinemaZ\CinemaZ\obj\Debug\net5.0\Razor\Views\Movie\AddMovieToRoom.cshtml.g.cs

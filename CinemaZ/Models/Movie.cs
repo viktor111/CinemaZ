@@ -1,13 +1,19 @@
 ﻿using CinemaZ.Models.Types;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace CinemaZ.Models
 {
     public class Movie
     {
+        [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
 
+        // ToDo: Add movie lenght prop
+        
         public string Name { get; set; }
 
         public string Picture { get; set; }
