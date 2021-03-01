@@ -444,3 +444,5 @@ D:\programming\c#\CinemaZ\CinemaZ\obj\Debug\net5.0\Razor\Views\Cinema\CinemaDeta
 D:\programming\c#\CinemaZ\CinemaZ\obj\Debug\net5.0\Razor\Views\Movie\CreateMovie.cshtml.g.cs
 D:\programming\c#\CinemaZ\CinemaZ\obj\Debug\net5.0\Razor\Views\Movie\Index.cshtml.g.cs
 D:\programming\c#\CinemaZ\CinemaZ\obj\Debug\net5.0\Razor\Views\Movie\AddMovieToRoom.cshtml.g.cs
+D:\programming\c#\CinemaZ\CinemaZ\bin\Debug\net5.0\Moq.dll
+D:\programming\c#\CinemaZ\CinemaZ\bin\Debug\net5.0\Moq.xml

@@ -16,6 +16,8 @@ namespace CinemaZ.Service
 
         List<Cinema> ListCinemas();
 
+        List<Room> ListRooms(Cinema cinema);
+
         Cinema EdditCinema(Cinema cinema);
     }
 }

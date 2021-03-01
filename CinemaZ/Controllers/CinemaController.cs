@@ -8,13 +8,13 @@ namespace CinemaZ.Controllers
 {
     public class CinemaController : Controller
     {
-        private readonly SqlCinemaService _sqlCinemaService;
-        private readonly SqlRoomService _sqlRoomService;
+        private readonly ISqlCinemaService _sqlCinemaService;
+        private readonly ISqlRoomService _sqlRoomService;
 
         public CinemaController
             (
-            SqlCinemaService sqlCinemaService,
-            SqlRoomService sqlRoomService
+            ISqlCinemaService sqlCinemaService,
+            ISqlRoomService sqlRoomService
             )
         {
             _sqlCinemaService = sqlCinemaService;
@@ -47,7 +47,7 @@ namespace CinemaZ.Controllers
 
         [HttpGet]
         public IActionResult CreateCinema()
-        {           
+        {
             return View();
         }
 

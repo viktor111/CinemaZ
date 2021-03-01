@@ -18,4 +18,10 @@
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="5.0.2" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Reference Include="Moq, Version=4.16.0.0, Culture=neutral, PublicKeyToken=69f491c39445e920">
+      <HintPath>C:\Users\varti\.nuget\packages\moq\4.16.1\lib\netstandard2.1\Moq.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
 </Project>

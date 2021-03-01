@@ -10,17 +10,17 @@ namespace CinemaZ.Controllers
 {
     public class MovieController : Controller
     {
-        private readonly SqlMovieService _sqlMovieService;
-        private readonly SqlPremiereService _sqlPremiereService;
-        private readonly SqlRoomService _sqlRoomService;
-        private readonly SqlMovieRoomService _sqlMovieRoomService;
+        private readonly ISqlMovieService _sqlMovieService;
+        private readonly ISqlPremiereService _sqlPremiereService;
+        private readonly ISqlRoomService _sqlRoomService;
+        private readonly ISqlMovieRoomService _sqlMovieRoomService;
         
         public MovieController
            (
-            SqlMovieService sqlMovieService, 
-            SqlPremiereService sqlPremiereService, 
-            SqlRoomService sqlRoomService, 
-            SqlMovieRoomService sqlMovieRoomService
+            ISqlMovieService sqlMovieService, 
+            ISqlPremiereService sqlPremiereService, 
+            ISqlRoomService sqlRoomService, 
+            ISqlMovieRoomService sqlMovieRoomService
             )
         {
             _sqlMovieService = sqlMovieService;

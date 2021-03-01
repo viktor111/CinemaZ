@@ -8,12 +8,12 @@ namespace CinemaZ.Service
     public class SqlRoomService : ISqlRoomService
     {
         private readonly ApplicationDbContext _dbContext;
-        private readonly SqlSeatService _sqlSeatService;
+        private readonly ISqlSeatService _sqlSeatService;
 
         public SqlRoomService
             (
             ApplicationDbContext dbContext,
-            SqlSeatService sqlSeatService
+            ISqlSeatService sqlSeatService
             )
         {
             _dbContext = dbContext;
