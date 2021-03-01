@@ -41,6 +41,7 @@ namespace CinemaZ.Service
             cinemaToUpdate.City = cinema.City;
             cinemaToUpdate.Adress = cinema.Adress;
             cinemaToUpdate.TimeClose = cinema.TimeClose;
+            cinemaToUpdate.Rooms = cinema.Rooms;
 
             _dbContext.SaveChanges();
 
