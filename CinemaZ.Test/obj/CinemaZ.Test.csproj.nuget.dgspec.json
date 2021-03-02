@@ -1,40 +1,33 @@
 {
   "format": 1,
   "restore": {
-    "D:\\programming\\c#\\CinemaZ\\CinemaZ.Test\\CinemaZ.Test.csproj": {}
+    "/Users/viktordraganov/programming/c#/CinemaZ/CinemaZ/CinemaZ.Test/CinemaZ.Test.csproj": {}
   },
   "projects": {
-    "D:\\programming\\c#\\CinemaZ\\CinemaZ.Test\\CinemaZ.Test.csproj": {
+    "/Users/viktordraganov/programming/c#/CinemaZ/CinemaZ/CinemaZ.Test/CinemaZ.Test.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\programming\\c#\\CinemaZ\\CinemaZ.Test\\CinemaZ.Test.csproj",
+        "projectUniqueName": "/Users/viktordraganov/programming/c#/CinemaZ/CinemaZ/CinemaZ.Test/CinemaZ.Test.csproj",
         "projectName": "CinemaZ.Test",
-        "projectPath": "D:\\programming\\c#\\CinemaZ\\CinemaZ.Test\\CinemaZ.Test.csproj",
-        "packagesPath": "C:\\Users\\varti\\.nuget\\packages\\",
-        "outputPath": "D:\\programming\\c#\\CinemaZ\\CinemaZ.Test\\obj\\",
+        "projectPath": "/Users/viktordraganov/programming/c#/CinemaZ/CinemaZ/CinemaZ.Test/CinemaZ.Test.csproj",
+        "packagesPath": "/Users/viktordraganov/.nuget/packages/",
+        "outputPath": "/Users/viktordraganov/programming/c#/CinemaZ/CinemaZ/CinemaZ.Test/obj/",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "D:\\Microsoft\\Xamarin\\NuGet"
-        ],
         "configFilePaths": [
-          "C:\\Users\\varti\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
+          "/Users/viktordraganov/.config/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net5.0"
         ],
         "sources": {
-          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "https://api.nuget.org/v3/index.json": {},
-          "https://pkgs.dev.azure.com/varti11/ZvadoDPI/_packaging/ZvadoDPI/nuget/v3/index.json": {}
+          "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "net5.0": {
             "targetAlias": "net5.0",
             "projectReferences": {
-              "D:\\programming\\c#\\CinemaZ\\CinemaZ\\CinemaZ.csproj": {
-                "projectPath": "D:\\programming\\c#\\CinemaZ\\CinemaZ\\CinemaZ.csproj"
+              "/Users/viktordraganov/programming/c#/CinemaZ/CinemaZ/CinemaZ/CinemaZ.csproj": {
+                "projectPath": "/Users/viktordraganov/programming/c#/CinemaZ/CinemaZ/CinemaZ/CinemaZ.csproj"
               }
             }
           }
@@ -97,41 +90,31 @@
           "assetTargetFallback": true,
           "warn": true,
           "frameworkReferences": {
-            "Microsoft.AspNetCore.App": {
-              "privateAssets": "none"
-            },
             "Microsoft.NETCore.App": {
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.103\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/5.0.103/RuntimeIdentifierGraph.json"
         }
       }
     },
-    "D:\\programming\\c#\\CinemaZ\\CinemaZ\\CinemaZ.csproj": {
+    "/Users/viktordraganov/programming/c#/CinemaZ/CinemaZ/CinemaZ/CinemaZ.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\programming\\c#\\CinemaZ\\CinemaZ\\CinemaZ.csproj",
+        "projectUniqueName": "/Users/viktordraganov/programming/c#/CinemaZ/CinemaZ/CinemaZ/CinemaZ.csproj",
         "projectName": "CinemaZ",
-        "projectPath": "D:\\programming\\c#\\CinemaZ\\CinemaZ\\CinemaZ.csproj",
-        "packagesPath": "C:\\Users\\varti\\.nuget\\packages\\",
-        "outputPath": "D:\\programming\\c#\\CinemaZ\\CinemaZ\\obj\\",
+        "projectPath": "/Users/viktordraganov/programming/c#/CinemaZ/CinemaZ/CinemaZ/CinemaZ.csproj",
+        "packagesPath": "/Users/viktordraganov/.nuget/packages/",
+        "outputPath": "/Users/viktordraganov/programming/c#/CinemaZ/CinemaZ/CinemaZ/obj/",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "D:\\Microsoft\\Xamarin\\NuGet"
-        ],
         "configFilePaths": [
-          "C:\\Users\\varti\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
+          "/Users/viktordraganov/.config/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net5.0"
         ],
         "sources": {
-          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "https://api.nuget.org/v3/index.json": {},
-          "https://pkgs.dev.azure.com/varti11/ZvadoDPI/_packaging/ZvadoDPI/nuget/v3/index.json": {}
+          "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "net5.0": {
@@ -204,7 +187,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.103\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/5.0.103/RuntimeIdentifierGraph.json"
         }
       }
     }

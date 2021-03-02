@@ -21,6 +21,7 @@ namespace CinemaZ.Test.Services
         [TestMethod]
         public void ListSeats_CountShouldBeMoreThanOne()
         {
+            //Arrange
             Room room = new()
             {
                 Cinema = new Cinema(),
@@ -28,11 +29,13 @@ namespace CinemaZ.Test.Services
                 CinemaId = 1,
                 MovieRoom = new List<MovieRoom>()
             };
-            
+
+            //Act
             room.Seats = _sqlSeatService.GenerateSeats(room);
             
             _dbContext.Room.Add(room);
 
+            //Assert
             List<Seat> seats = room.Seats.ToList();
 
             bool seatCountBiggerThanOne = seats.Count >= 1;
@@ -43,6 +46,7 @@ namespace CinemaZ.Test.Services
         [TestMethod]
         public void ListSeats_ShouldNotBeNull()
         {
+            //Arrange
             Room room = new()
             {
                 Cinema = new Cinema(),
@@ -50,11 +54,13 @@ namespace CinemaZ.Test.Services
                 CinemaId = 1,
                 MovieRoom = new List<MovieRoom>()
             };
-            
+
+            //Act
             room.Seats = _sqlSeatService.GenerateSeats(room);
             
             _dbContext.Room.Add(room);
 
+            //Assert
             List<Seat> seats = room.Seats.ToList();
 
             Assert.IsNotNull(seats);
@@ -63,6 +69,7 @@ namespace CinemaZ.Test.Services
         [TestMethod]
         public void GenerateSeats_ShouldGenerateRightColAndRow()
         {
+            //Arrange
             Room room = new()
             {
                 Cinema = new Cinema(),
@@ -70,11 +77,13 @@ namespace CinemaZ.Test.Services
                 CinemaId = 1,
                 MovieRoom = new List<MovieRoom>()
             };
-            
+
+            //Act
             room.Seats = _sqlSeatService.GenerateSeats(room);
             
             _dbContext.Room.Add(room);
 
+            //Assert
             List<Seat> seats = room.Seats.ToList();
 
             Assert.AreEqual(RowType.A,seats[0].RowId);

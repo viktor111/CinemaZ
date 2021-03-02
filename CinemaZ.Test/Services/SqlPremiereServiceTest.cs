@@ -21,6 +21,7 @@ namespace CinemaZ.Test.Services
         [TestMethod]
         public void ListPremier_ShouldWork()
         {
+            //Arrange
             Premiere premiere1 = new()
             {
                 Discount = 20M,
@@ -37,12 +38,13 @@ namespace CinemaZ.Test.Services
                 PremiereDate = DateTime.Now
             };
 
-
+            //Act
             _dbContext.Premiere.Add(premiere1);
             _dbContext.Premiere.Add(premiere2);
             
             _dbContext.SaveChanges();
 
+            //Assert
             List<Premiere> premieres = _sqlPremiereService.ListPremieres();
             
             Assert.IsNotNull(premieres);
@@ -52,6 +54,7 @@ namespace CinemaZ.Test.Services
         [TestMethod]
         public void GetPremiere_ShouldWork()
         {
+            //Arrange
             Premiere premiere = new()
             {
                 Discount = 20M,
@@ -60,10 +63,12 @@ namespace CinemaZ.Test.Services
                 PremiereDate = DateTime.Now
             };
 
+            //Act
             _dbContext.Premiere.Add(premiere);
             
             _dbContext.SaveChanges();
 
+            //Assert
             Premiere premiereDb = _sqlPremiereService.GetPremiere(premiere.Id);
             
             Assert.IsNotNull(premiereDb);
@@ -74,6 +79,7 @@ namespace CinemaZ.Test.Services
         [TestMethod]
         public void EdditPremiere_SouldPersist()
         {
+            //Arrange
             Premiere premiere = new()
             {
                 Discount = 20M,
@@ -82,10 +88,13 @@ namespace CinemaZ.Test.Services
                 PremiereDate = DateTime.Now
             };
 
+           
+
+            //Act
             _dbContext.Premiere.Add(premiere);
             
             _dbContext.SaveChanges();
-            
+
             Premiere premiere2 = new()
             {
                 Id = premiere.Id,
@@ -97,6 +106,7 @@ namespace CinemaZ.Test.Services
 
             _sqlPremiereService.EdditPremiere(premiere2);
 
+            //Assert
             Premiere premiereDb = _dbContext.Premiere.FirstOrDefault(p => p.Id == premiere.Id);
             
             Assert.AreEqual(premiere2.Discount, premiereDb.Discount);
@@ -106,6 +116,7 @@ namespace CinemaZ.Test.Services
         [TestMethod]
         public void DeletePremiere_ShouldDelete()
         {
+            //Arrange
             Premiere premiere = new()
             {
                 Discount = 20M,
@@ -114,11 +125,14 @@ namespace CinemaZ.Test.Services
                 PremiereDate = DateTime.Now
             };
 
+            //Act
             _dbContext.Premiere.Add(premiere);
             
             _dbContext.SaveChanges();
 
             _sqlPremiereService.DeletePremiere(premiere);
+
+            //Assert
 
             Premiere premiereDb = _dbContext.Premiere.FirstOrDefault(p => p.Id == premiere.Id);
             
@@ -128,6 +142,7 @@ namespace CinemaZ.Test.Services
         [TestMethod]
         public void CreatePremiere_ShouldPersist()
         {
+            //Arrange
             Premiere premiere = new()
             {
                 Discount = 20M,
@@ -136,8 +151,10 @@ namespace CinemaZ.Test.Services
                 PremiereDate = DateTime.Now
             };
 
+            //Act
             _sqlPremiereService.CreatePremiere(premiere);
 
+            //Assert
             List<Premiere> premieres = _dbContext.Premiere.ToList();
 
             Assert.AreEqual(1, premieres.Count);

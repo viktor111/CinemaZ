@@ -18,8 +18,49 @@ namespace CinemaZ.Test.Services
         }
 
         [TestMethod]
+        public void CreateCinema_ShouldCreateValid()
+        {
+            //Arrange
+            List<Room> rooms = new();
+
+            Room room = new();
+            room.Cinema = new();
+            room.CinemaId = 1;
+            room.MovieRoom = new List<MovieRoom>();
+            room.Name = "Hello";
+
+            Seat seat = new();
+            seat.ColumnId = ColumnType.k;
+            seat.RowId = RowType.A;
+            seat.RoomId = room.Id;
+
+            rooms.Add(room);
+
+            Cinema cinema = new();
+            cinema.Name = "w";
+            cinema.Rooms = rooms;
+            cinema.TimeClose = "w";
+            cinema.City = CityType.California;
+
+            //Act
+            _sqlCinemaService.CreateCinema(cinema);
+
+            _dbContext.SaveChanges();
+
+            //Assert
+            Cinema cinemaDb = _dbContext.Cinema.FirstOrDefault(c => c.Id == cinema.Id);
+
+            Assert.IsNotNull(cinemaDb);
+            Assert.AreEqual(cinema.Id, cinemaDb.Id);
+            Assert.AreEqual(cinema.Name, cinemaDb.Name);
+            Assert.AreEqual(cinema.Rooms, cinemaDb.Rooms);
+            Assert.AreEqual(cinema.City, cinemaDb.City);
+        }
+
+        [TestMethod]
         public void ListCinema_ShouldListCinemas()
         {
+            //Arrange
             Cinema cinemaDto = new()
             {
                 Adress = "Some adress",
@@ -37,9 +78,11 @@ namespace CinemaZ.Test.Services
                 TimeClose = "Some Time2"
             };
 
+            //Act
             _sqlCinemaService.CreateCinema(cinemaDto);
             _sqlCinemaService.CreateCinema(cinemaDto2);
-            
+
+            //Assert
             List<Cinema> cinemas = _sqlCinemaService.ListCinemas();
 
             Assert.IsNotNull(cinemas);
@@ -50,6 +93,7 @@ namespace CinemaZ.Test.Services
         [TestMethod]
         public void ListRooms_ShouldListRooms()
         {
+            //Arrange
             Cinema cinemaDto = new()
             {
                 Adress = "Some adress",
@@ -79,8 +123,10 @@ namespace CinemaZ.Test.Services
                 TimeClose = "Some Time"
             };
 
+            //Act
             _sqlCinemaService.CreateCinema(cinemaDto);
 
+            //Assert
             List<Room> rooms = _sqlCinemaService.ListRooms(cinemaDto);
             int singleRoomId = rooms[0].Id;
             
@@ -91,6 +137,7 @@ namespace CinemaZ.Test.Services
         [TestMethod]
         public void DeleteCinema_ShouldDelete()
         {
+            //Arrange
             Cinema cinemaDto = new()
             {
                 Adress = "Some adress",
@@ -100,10 +147,12 @@ namespace CinemaZ.Test.Services
                 TimeClose = "Some Time"
             };
 
+            //Act
             _sqlCinemaService.CreateCinema(cinemaDto);
 
             _sqlCinemaService.DeleteCinema(cinemaDto);
 
+            //Assert
             Cinema cinema = _sqlCinemaService.GetCinema(cinemaDto.Id);
 
             Assert.IsNull(cinema);
@@ -112,6 +161,7 @@ namespace CinemaZ.Test.Services
         [TestMethod]
         public void EditCinema_ChangesShouldPersist()
         {
+            //Arrange
             Cinema cinemaDto = new()
             {
                 Adress = "Some adress",
@@ -133,8 +183,10 @@ namespace CinemaZ.Test.Services
                 TimeClose = "Some Time 2"
             };
 
+            //Act
             _sqlCinemaService.EdditCinema(newCinema);
 
+            //Assert
             Cinema cinema = _sqlCinemaService.GetCinema(newCinema.Id);
             
             Assert.AreEqual(newCinema.Id, cinema.Id);
@@ -148,6 +200,7 @@ namespace CinemaZ.Test.Services
         [TestMethod]
         public void GetCinema_ShouldGetCinema()
         {
+            //Arrange
             Cinema cinemaDto = new()
             {
                 Adress = "Some adress",
@@ -157,8 +210,10 @@ namespace CinemaZ.Test.Services
                 TimeClose = "Some Time"
             };
 
+            //Act
             _sqlCinemaService.CreateCinema(cinemaDto);
 
+            //Assert
             Cinema cinemaGet = _sqlCinemaService.GetCinema(cinemaDto.Id);
             
             Assert.AreEqual(cinemaDto, cinemaGet);
@@ -167,6 +222,7 @@ namespace CinemaZ.Test.Services
         [TestMethod]
         public void CreateCinema_ShouldGenerateId()
         {
+            //Arange
             Cinema cinemaDto = new()
             {
                 Adress = "Some adress",
@@ -176,14 +232,17 @@ namespace CinemaZ.Test.Services
                 TimeClose = "Some Time"
             };
 
+            //Act
             _sqlCinemaService.CreateCinema(cinemaDto);
 
+            //Assert
             Assert.AreNotEqual(0, cinemaDto.Id);
         }
         
         [TestMethod]
         public void CreateCinema_ShouldPersist()
         {
+            //Arrange
             Cinema cinemaDto = new()
             {
                 Adress = "Some adress",
@@ -193,8 +252,11 @@ namespace CinemaZ.Test.Services
                 TimeClose = "Some Time"
             };
 
+            //Act
             _sqlCinemaService.CreateCinema(cinemaDto);
 
+
+            //Assert
             Assert.AreEqual(cinemaDto, _dbContext.Cinema.Find(cinemaDto.Id));
             Assert.AreEqual(1, _dbContext.Cinema.Count());
         }

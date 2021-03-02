@@ -21,6 +21,7 @@ namespace CinemaZ.Test.Services
         [TestMethod]
         public void ListMovies_ShouldWork()
         {
+            //Arrange
             Movie movie1 = new()
             {
                 Category = CategoryType.Action,
@@ -44,11 +45,12 @@ namespace CinemaZ.Test.Services
                 ReleaseDate = DateTime.Now,
             };
             
-
+            //Act
             _dbContext.Movie.Add(movie1);
             _dbContext.Movie.Add(movie2);
             _dbContext.SaveChanges();
 
+            //Assert
             List<Movie> movies = _sqlMovieService.ListMovies();
             
             Assert.IsNotNull(movies);
@@ -58,6 +60,7 @@ namespace CinemaZ.Test.Services
         [TestMethod]
         public void GetMovie_ShouldWork()
         {
+            //Arrange
             Movie movie = new()
             {
                 Category = CategoryType.Action,
@@ -70,9 +73,11 @@ namespace CinemaZ.Test.Services
                 ReleaseDate = DateTime.Now,
             };
 
+            //Act
             _dbContext.Movie.Add(movie);
             _dbContext.SaveChanges();
 
+            //Assert
             Movie movieDb = _sqlMovieService.GetMovie(movie.Id);
             
             Assert.IsNotNull(movieDb);
@@ -89,6 +94,7 @@ namespace CinemaZ.Test.Services
         [TestMethod]
         public void DeleteMovie_ShouldWork()
         {
+            //Arrange
             Movie movie = new()
             {
                 Category = CategoryType.Action,
@@ -101,11 +107,13 @@ namespace CinemaZ.Test.Services
                 ReleaseDate = DateTime.Now,
             };
 
+            //Act
             _dbContext.Movie.Add(movie);
             _dbContext.SaveChanges();
 
             _sqlMovieService.DeleteMovie(movie);
-            
+
+            //Assert
             Movie movieDb = _dbContext.Movie.FirstOrDefault(m => m.Id == movie.Id);
 
             Assert.IsNull(movieDb);
@@ -114,6 +122,7 @@ namespace CinemaZ.Test.Services
         [TestMethod]
         public void EditMovie_ShouldPersist()
         {
+            //Arrange
             Movie movie = new()
             {
                 Category = CategoryType.Action,
@@ -124,11 +133,12 @@ namespace CinemaZ.Test.Services
                 MovieRating = MovieRatingType.A,
                 MovieRoom = new List<MovieRoom>(),
                 ReleaseDate = DateTime.Now,
-            };
+            };           
 
+            //Act
             _dbContext.Movie.Add(movie);
             _dbContext.SaveChanges();
-            
+
             Movie newMovie = new()
             {
                 Id = movie.Id,
@@ -144,6 +154,7 @@ namespace CinemaZ.Test.Services
 
             _sqlMovieService.EdditMovie(newMovie);
 
+            //Assert
             Movie movieDb = _dbContext.Movie.FirstOrDefault(m => m.Id == movie.Id);
             
             Assert.IsNotNull(movieDb);
@@ -157,6 +168,7 @@ namespace CinemaZ.Test.Services
         [TestMethod]
         public void CreateMovie_ShouldPersist()
         {
+            //Arrange
             Movie movie = new()
             {
                 Category = CategoryType.Action,
@@ -169,9 +181,10 @@ namespace CinemaZ.Test.Services
                 PremiereId = 1,
                 ReleaseDate = DateTime.Now,
             };
-
+            //Act
             _sqlMovieService.CreateMovie(movie);
 
+            //Assert
             Movie movieDb = _dbContext.Movie.FirstOrDefault(m => m.Id == movie.Id);
             
             Assert.IsNotNull(movieDb);

@@ -20,6 +20,7 @@ namespace CinemaZ.Test.Services
         [TestMethod]
         public void ListArticles_ShouldWork()
         {
+            //Arrange
             Article article1 = new()
             {
                 Text = "random text",
@@ -33,10 +34,12 @@ namespace CinemaZ.Test.Services
                 Views = 1012310,
             };
             
+            //Act
             _dbContext.Article.Add(article1);
             _dbContext.Article.Add(article2);
             _dbContext.SaveChanges();
 
+            //Assert
             List<Article> articles = _sqlArticleService.ListArticles();
             
             Assert.IsNotNull(articles);
@@ -46,6 +49,7 @@ namespace CinemaZ.Test.Services
         [TestMethod]
         public void GetArticle_ShouldWork()
         {
+            //Arrange
             Article article = new()
             {
                 Text = "random text",
@@ -53,9 +57,11 @@ namespace CinemaZ.Test.Services
                 Views = 100,
             };
 
+            //Act
             _dbContext.Article.Add(article);
             _dbContext.SaveChanges();
 
+            //Assert
             Article articleDb = _sqlArticleService.GetArticle(article.Id);
             
             Assert.IsNotNull(article);
@@ -68,6 +74,8 @@ namespace CinemaZ.Test.Services
         [TestMethod]
         public void EditArticle_ShouldPersist()
         {
+
+            //Arrange
             Article article = new()
             {
                 Text = "random text",
@@ -86,8 +94,11 @@ namespace CinemaZ.Test.Services
                 Views = 102320,
             };
 
+            //Act
             _sqlArticleService.EdditArticle(article2);
 
+
+            //Assert
             Article articleDb = _dbContext.Article.FirstOrDefault(a => a.Id == article.Id);
             
             Assert.AreEqual(article2.Id, articleDb.Id);
@@ -99,6 +110,7 @@ namespace CinemaZ.Test.Services
         [TestMethod]
         public void DeleteArticle_ShouldWork()
         {
+            //Arrange
             Article expected = new()
             {
                 Date = DateTime.Now,
@@ -107,12 +119,14 @@ namespace CinemaZ.Test.Services
                 Views = 100,
             };
 
+            //Act
             _dbContext.Article.Add(expected);
 
             _sqlArticleService.DeleteArticle(expected);
 
             _dbContext.SaveChanges();
 
+            //Assert
             List<Article> articles = _dbContext.Article.ToList();
 
             Assert.AreEqual(0,articles.Count);
@@ -121,6 +135,7 @@ namespace CinemaZ.Test.Services
         [TestMethod]
         public void CreateArticle_ShouldWork()
         {
+            //Arrange
             Article expected = new()
             {
                 Date = DateTime.Now,
@@ -129,8 +144,10 @@ namespace CinemaZ.Test.Services
                 Views = 100,
             };
 
+            //Act
             _sqlArticleService.CreateArticle(expected);
 
+            //Assert
             Article actual = _dbContext.Article.FirstOrDefault(a => a.Id == expected.Id);
             
             Assert.AreEqual(expected,actual);

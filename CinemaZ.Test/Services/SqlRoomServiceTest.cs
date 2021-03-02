@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using System.Net.Sockets;
 using CinemaZ.Models;
 using CinemaZ.Models.Types;
@@ -11,15 +12,63 @@ namespace CinemaZ.Test.Services
     public class SqlRoomServiceTest : DbContextSqlLite
     {
         private readonly SqlRoomService _sqlRoomService;
+        private readonly SqlCinemaService _sqlCinemaService;
 
         public SqlRoomServiceTest()
         {
             _sqlRoomService = new(_dbContext);
+            _sqlCinemaService = new(_dbContext);
+        }
+
+        [TestMethod]
+        public void CreateRoom_ShouldPersist()
+        {
+             //Arrange
+            List<Room> rooms = new();
+
+            Room room = new();
+            room.Cinema = new();
+            room.CinemaId = 1;
+            room.MovieRoom = new List<MovieRoom>();
+            room.Name = "Hello";
+
+            Seat seat = new();
+            seat.ColumnId = ColumnType.k;
+            seat.RowId = RowType.A;
+            seat.RoomId = room.Id;
+
+            rooms.Add(room);
+
+            Cinema cinema = new();
+            cinema.Name = "w";
+            cinema.Rooms = rooms;
+            cinema.TimeClose = "w";
+            cinema.City = CityType.California;
+
+            _sqlCinemaService.CreateCinema(cinema);
+
+            _dbContext.SaveChanges();
+
+            //Act
+            _sqlRoomService.CreateRoom(room);
+
+            //Assert
+            Room roomDb = _dbContext.Room.FirstOrDefault(r => r.Id == room.Id);
+
+            Assert.IsNotNull(roomDb);
+            Assert.AreEqual(room.Id, roomDb.Id);
+            Assert.AreEqual(room.Name, roomDb.Name);
+            Assert.AreEqual(room.Seats, roomDb.Seats);
+            Assert.AreEqual(room.CinemaId, roomDb.CinemaId);
         }
 
         [TestMethod]
         public void ListRooms_ShouldWork()
         {
+
+            //Arrange
+            int roomExpextedCount = 2;
+
             Room room = new()
             {
                 Name = "wwwe",
@@ -38,13 +87,13 @@ namespace CinemaZ.Test.Services
                 MovieRoom = new List<MovieRoom>()
             };
 
+            //Act
             _dbContext.Room.Add(room);
             _dbContext.Room.Add(room2);
 
             _dbContext.SaveChanges();
-
-            int roomExpextedCount = 2;
             
+            //Assert
             List<Room> rooms = _sqlRoomService.ListRooms();
 
             Assert.IsNotNull(rooms);
@@ -54,6 +103,7 @@ namespace CinemaZ.Test.Services
         [TestMethod]
         public void GetRoomByName_ShouldWork()
         {
+            //Arrange
             Room room = new()
             {
                 Name = "wwwe",
@@ -63,10 +113,12 @@ namespace CinemaZ.Test.Services
                 MovieRoom = new List<MovieRoom>()
             };
 
+            //Act
             _dbContext.Room.Add(room);
 
             _dbContext.SaveChanges();
 
+            //Assert
             Room roomDb = _sqlRoomService.GetRoomByName(room.Name);
             
             Assert.IsNotNull(roomDb);
@@ -76,6 +128,7 @@ namespace CinemaZ.Test.Services
         [TestMethod]
         public void GetRoom_ShouldWork()
         {
+            //Arrange
             Room room = new()
             {
                 Name = "wwwe",
@@ -85,10 +138,12 @@ namespace CinemaZ.Test.Services
                 MovieRoom = new List<MovieRoom>()
             };
 
+            //Act
             _dbContext.Room.Add(room);
 
             _dbContext.SaveChanges();
 
+            //Assert
             Room roomDb = _sqlRoomService.GetRoom(room.Id);
             
             Assert.IsNotNull(roomDb);
@@ -98,6 +153,7 @@ namespace CinemaZ.Test.Services
         [TestMethod]
         public void EditRoom_shouldPersist()
         {
+            //Arrange
             Room room = new()
             {
                 Name = "wwwe",
@@ -105,8 +161,9 @@ namespace CinemaZ.Test.Services
                 Seats = new List<Seat>(),
                 CinemaId = 1,
                 MovieRoom = new List<MovieRoom>()
-            };
+            };            
 
+            //Act
             _dbContext.Room.Add(room);
 
             _dbContext.SaveChanges();
@@ -123,6 +180,7 @@ namespace CinemaZ.Test.Services
 
             _sqlRoomService.EdditRoom(newRoom);
 
+            //Assert
             Room roomDb = _sqlRoomService.GetRoom(room.Id);
             
             Assert.AreEqual(newRoom.Name, roomDb.Name);
@@ -135,6 +193,7 @@ namespace CinemaZ.Test.Services
         [TestMethod]
         public void DeleteRoom_ShouldWork()
         {
+            //Arrange
             int expectedCount = 0;
             
             Room room = new()
@@ -146,6 +205,7 @@ namespace CinemaZ.Test.Services
                 MovieRoom = new List<MovieRoom>()
             };
 
+            //Act
             _dbContext.Room.Add(room);
 
             _dbContext.SaveChanges();
@@ -154,6 +214,7 @@ namespace CinemaZ.Test.Services
             
             _dbContext.SaveChanges();
 
+            //Assert
             List<Room> rooms = _sqlRoomService.ListRooms();
             
             Assert.AreEqual(expectedCount,rooms.Count);
