@@ -7,13 +7,7 @@ namespace CinemaZ.Service
     {
         Seat GetSeat(int id);
 
-        Seat CreateSeat(Seat seat);
-
-        Seat DeleteSeat(Seat seat);
-
         List<Seat> ListSeats();
-
-        Seat EdditSeat(Seat seat);
 
         List<Seat> GenerateSeats(Room room);
     }

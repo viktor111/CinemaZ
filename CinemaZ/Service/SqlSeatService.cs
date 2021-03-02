@@ -16,25 +16,6 @@ namespace CinemaZ.Service
             _dbContext = dbContext;
         }
 
-        public Seat CreateSeat(Seat seat)
-        {
-            _dbContext.Seat.Add(seat);
-
-            _dbContext.SaveChanges();
-
-            return new Seat();
-        }
-
-        public Seat DeleteSeat(Seat seat)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Seat EdditSeat(Seat seat)
-        {
-            throw new NotImplementedException();
-        }
-
         public List<Seat> GenerateSeats(Room room)
         {
             List<Seat> newSeats = new();

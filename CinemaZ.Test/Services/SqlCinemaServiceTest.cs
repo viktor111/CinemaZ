@@ -14,7 +14,7 @@ namespace CinemaZ.Test.Services
         private readonly SqlCinemaService _sqlCinemaService;
         public SqlCinemaServiceTest()
         {
-            _sqlCinemaService = new SqlCinemaService(_dbContext);
+            _sqlCinemaService = new(_dbContext);
         }
 
         [TestMethod]
@@ -110,10 +110,8 @@ namespace CinemaZ.Test.Services
         }
 
         [TestMethod]
-        public void EditCinema_ShouldPersist()
+        public void EditCinema_ChangesShouldPersist()
         {
-            int id = 1;
-            
             Cinema cinemaDto = new()
             {
                 Adress = "Some adress",

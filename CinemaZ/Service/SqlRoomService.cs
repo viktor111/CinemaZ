@@ -8,21 +8,20 @@ namespace CinemaZ.Service
     public class SqlRoomService : ISqlRoomService
     {
         private readonly ApplicationDbContext _dbContext;
-        private readonly ISqlSeatService _sqlSeatService;
 
         public SqlRoomService
             (
-            ApplicationDbContext dbContext,
-            ISqlSeatService sqlSeatService
-            )
+            ApplicationDbContext dbContext
+        )
         {
             _dbContext = dbContext;
-            _sqlSeatService = sqlSeatService;
         }
 
         public Room CreateRoom(Room room)
         {
-            List<Seat> newSeats = _sqlSeatService.GenerateSeats(room);
+            SqlSeatService sqlSeatService = new SqlSeatService(_dbContext);
+            
+            List<Seat> newSeats = sqlSeatService.GenerateSeats(room);
 
             room.Seats = newSeats;
 
