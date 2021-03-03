@@ -12,14 +12,14 @@ namespace CinemaZ.Test.Controllers
     [TestClass]
     public class RoomControllerTest : DbContextSqlLite
     {
-        private readonly SqlRoomService _sqlRoomService;
-        private readonly SqlCinemaService _sqlCinemaService;
+        private readonly ISqlRoomService _sqlRoomService;
+        private readonly ISqlCinemaService _sqlCinemaService;
         private readonly RoomController _roomController;
 
         public RoomControllerTest()
         {
-            _sqlRoomService = new(_dbContext);
-            _sqlCinemaService = new(_dbContext);
+            _sqlRoomService = new SqlRoomService(_dbContext);
+            _sqlCinemaService = new SqlCinemaService(_dbContext);
             _roomController = new(_sqlCinemaService, _sqlRoomService);
         }
 

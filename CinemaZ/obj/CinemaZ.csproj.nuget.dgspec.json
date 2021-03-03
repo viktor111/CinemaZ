@@ -1,26 +1,33 @@
 {
   "format": 1,
   "restore": {
-    "/Users/viktordraganov/programming/c#/CinemaZ/CinemaZ/CinemaZ/CinemaZ.csproj": {}
+    "D:\\programming\\c#\\CinemaZ\\CinemaZ\\CinemaZ.csproj": {}
   },
   "projects": {
-    "/Users/viktordraganov/programming/c#/CinemaZ/CinemaZ/CinemaZ/CinemaZ.csproj": {
+    "D:\\programming\\c#\\CinemaZ\\CinemaZ\\CinemaZ.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/viktordraganov/programming/c#/CinemaZ/CinemaZ/CinemaZ/CinemaZ.csproj",
+        "projectUniqueName": "D:\\programming\\c#\\CinemaZ\\CinemaZ\\CinemaZ.csproj",
         "projectName": "CinemaZ",
-        "projectPath": "/Users/viktordraganov/programming/c#/CinemaZ/CinemaZ/CinemaZ/CinemaZ.csproj",
-        "packagesPath": "/Users/viktordraganov/.nuget/packages/",
-        "outputPath": "/Users/viktordraganov/programming/c#/CinemaZ/CinemaZ/CinemaZ/obj/",
+        "projectPath": "D:\\programming\\c#\\CinemaZ\\CinemaZ\\CinemaZ.csproj",
+        "packagesPath": "C:\\Users\\varti\\.nuget\\packages\\",
+        "outputPath": "D:\\programming\\c#\\CinemaZ\\CinemaZ\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "D:\\Microsoft\\Xamarin\\NuGet"
+        ],
         "configFilePaths": [
-          "/Users/viktordraganov/.config/NuGet/NuGet.Config"
+          "C:\\Users\\varti\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
         ],
         "originalTargetFrameworks": [
           "net5.0"
         ],
         "sources": {
-          "https://api.nuget.org/v3/index.json": {}
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {},
+          "https://pkgs.dev.azure.com/varti11/ZvadoDPI/_packaging/ZvadoDPI/nuget/v3/index.json": {}
         },
         "frameworks": {
           "net5.0": {
@@ -93,7 +100,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/5.0.103/RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.103\\RuntimeIdentifierGraph.json"
         }
       }
     }

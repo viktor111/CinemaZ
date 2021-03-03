@@ -1,0 +1,14 @@
+﻿@using CinemaZ.ViewModels
+@model List<CinemaZ.ViewModels.MovieViewModel>
+
+@{
+    ViewBag.Title = "title";
+    Layout = "_Layout";
+}
+
+@foreach (MovieViewModel movieViewModel in Model)
+{
+    <p>
+        <img alt="image" src="/images/@movieViewModel.PictureSrc">
+    </p>
+}

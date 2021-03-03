@@ -11,11 +11,11 @@ namespace CinemaZ.Test.Services
     [TestClass]
     public class SqlPremiereServiceTest : DbContextSqlLite
     {
-        private readonly SqlPremiereService _sqlPremiereService;
+        private readonly ISqlPremiereService _sqlPremiereService;
         
         public SqlPremiereServiceTest()
         {
-            _sqlPremiereService = new(_dbContext);
+            _sqlPremiereService = new SqlPremiereService(_dbContext);
         }
 
         [TestMethod]

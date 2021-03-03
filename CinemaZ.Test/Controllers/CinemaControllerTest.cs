@@ -12,8 +12,8 @@ namespace CinemaZ.Test.Controllers
     [TestClass]
     public class CinemaControllerTest : DbContextSqlLite
     {
-        private readonly SqlCinemaService _sqlCinemaService;
-        private readonly SqlRoomService _sqlRoomService;
+        private readonly ISqlCinemaService _sqlCinemaService;
+        private readonly ISqlRoomService _sqlRoomService;
         private readonly CinemaController _cinemaController;
 
         public CinemaControllerTest()
@@ -112,21 +112,25 @@ namespace CinemaZ.Test.Controllers
         public void ListArticles_ShouldGetData()
         {
             //Arrange
-            Cinema cinema1 = new();
+            Cinema cinema1 = new()
+            {
+                Adress = "wew",
+                City = CityType.California,
+                Name = "name",
+                Rooms = new List<Room>(),
+                TimeClose = "weq"
+            };
 
-            cinema1.Adress = "wew";
-            cinema1.City = CityType.California;
-            cinema1.Name = "name";
-            cinema1.Rooms = new List<Room>();
-            cinema1.TimeClose = "weq";
 
-            Cinema cinema2 = new();
+            Cinema cinema2 = new()
+            {
+                Adress = "wewqwe",
+                City = CityType.California,
+                Name = "nameqwe",
+                Rooms = new List<Room>(),
+                TimeClose = "weeqwq"
+            };
 
-            cinema2.Adress = "wewqwe";
-            cinema2.City = CityType.California;
-            cinema2.Name = "nameqwe";
-            cinema2.Rooms = new List<Room>();
-            cinema2.TimeClose = "weeqwq";
 
             //Act
             _dbContext.Cinema.Add(cinema1);

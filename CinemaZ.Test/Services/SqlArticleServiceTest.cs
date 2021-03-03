@@ -10,7 +10,7 @@ namespace CinemaZ.Test.Services
     [TestClass]
     public class SqlArticleServiceTest : DbContextSqlLite
     {
-        private readonly SqlArticleService _sqlArticleService;
+        private readonly ISqlArticleService _sqlArticleService;
         
         public SqlArticleServiceTest()
         {

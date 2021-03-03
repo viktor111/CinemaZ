@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using CinemaZ.Models;
 using CinemaZ.Models.Types;
+using Microsoft.AspNetCore.Http;
 
 namespace CinemaZ.ViewModels
 {
@@ -22,6 +24,10 @@ namespace CinemaZ.ViewModels
         public int DaysPremiere { get; set; }
 
         public decimal DiscountPercent { get; set; }
+        
+        [Required(ErrorMessage = "Please choose image")]        
+        public IFormFile Picture { get; set; }
 
+        public string PictureSrc { get; set; }
     }
 }

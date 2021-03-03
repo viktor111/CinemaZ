@@ -1,8 +1,11 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
+using CinemaZ.Helpers;
 using CinemaZ.Models;
 using CinemaZ.Service;
 using CinemaZ.ViewModels;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 
@@ -14,19 +17,21 @@ namespace CinemaZ.Controllers
         private readonly ISqlPremiereService _sqlPremiereService;
         private readonly ISqlRoomService _sqlRoomService;
         private readonly ISqlMovieRoomService _sqlMovieRoomService;
+        private readonly IWebHostEnvironment _webHostEnvironment;
         
         public MovieController
            (
             ISqlMovieService sqlMovieService, 
             ISqlPremiereService sqlPremiereService, 
             ISqlRoomService sqlRoomService, 
-            ISqlMovieRoomService sqlMovieRoomService
-            )
+            ISqlMovieRoomService sqlMovieRoomService,
+            IWebHostEnvironment webHostEnvironment)
         {
             _sqlMovieService = sqlMovieService;
             _sqlPremiereService = sqlPremiereService;
             _sqlRoomService = sqlRoomService;
             _sqlMovieRoomService = sqlMovieRoomService;
+            _webHostEnvironment = webHostEnvironment;
         }
 
         [HttpGet]
@@ -46,6 +51,12 @@ namespace CinemaZ.Controllers
         {
             decimal discountCalc = model.DiscountPercent / 100;
             decimal discountedPrice = model.Price - (discountCalc * model.Price);
+
+            ImageUpload imageUpload = new(_webHostEnvironment);
+
+            string uniqueFilename = imageUpload.UploadedFile(model.Picture);
+
+            //string uniqueFileName = 
             
             Premiere premiere = new();
            
@@ -56,8 +67,8 @@ namespace CinemaZ.Controllers
             _sqlPremiereService.CreatePremiere(premiere);
             
             Movie movie = new();
-            
-            // Todo: Picture upload
+
+            movie.Picture = uniqueFilename;
             movie.Name = model.Name;
             movie.Price = model.Price;
             movie.ReleaseDate = model.ReleaseDate;
@@ -79,6 +90,28 @@ namespace CinemaZ.Controllers
             viewModel.Rooms = new SelectList(_sqlRoomService.ListRooms().Select(room => room.Name));
             
             return View(viewModel);
+        }
+
+        [HttpGet]
+        public IActionResult ListMovies()
+        {
+            List<MovieViewModel> model = new List<MovieViewModel>();
+
+            ICollection<Movie> movies = _sqlMovieService.ListMovies();
+
+            foreach (Movie movie in movies)
+            {
+                MovieViewModel movieViewModel = new();
+
+                movieViewModel.Category = movie.Category;
+                movieViewModel.Name = movie.Name;
+                movieViewModel.PictureSrc = movie.Picture;
+                movieViewModel.Price = movie.Price;
+                
+                model.Add(movieViewModel);
+            }
+
+            return View(model);
         }
 
         [HttpPost]

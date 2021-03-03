@@ -11,7 +11,7 @@ namespace CinemaZ.Test.Services
     [TestClass]
     public class SqlMovieServiceTest : DbContextSqlLite
     {
-        private readonly SqlMovieService _sqlMovieService;
+        private readonly ISqlMovieService _sqlMovieService;
         
         public SqlMovieServiceTest()
         {

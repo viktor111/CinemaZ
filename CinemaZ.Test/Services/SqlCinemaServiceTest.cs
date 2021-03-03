@@ -11,10 +11,10 @@ namespace CinemaZ.Test.Services
     [TestClass]
     public class SqlCinemaServiceTest : DbContextSqlLite
     {
-        private readonly SqlCinemaService _sqlCinemaService;
+        private readonly ISqlCinemaService _sqlCinemaService;
         public SqlCinemaServiceTest()
         {
-            _sqlCinemaService = new(_dbContext);
+            _sqlCinemaService = new SqlCinemaService(_dbContext);
         }
 
         [TestMethod]

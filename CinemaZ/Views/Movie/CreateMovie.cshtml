@@ -7,7 +7,7 @@
 
 <h2>Create Movie</h2>
 
-<form asp-controller="Movie" asp-action="CreateMovie">
+<form enctype="multipart/form-data" asp-controller="Movie" asp-action="CreateMovie">
     <div asp-validation-summary="ModelOnly" class="text-danger"></div>
     <div class="form-group">
         <label asp-for="Name" class="control-label"></label>
@@ -30,10 +30,18 @@
         <span asp-validation-for="ReleaseDate" class="text-danger"></span>
     </div>
     <div class="form-group">
-         <label asp-for="MovieRating" class="control-label"></label>
-         <input asp-items="Html.GetEnumSelectList<CinemaZ.Models.Types.MovieRatingType>()" asp-for="MovieRating" class="form-control" />
-         <span asp-validation-for="MovieRating" class="text-danger"></span>
+        <label asp-for="MovieRating" class="control-label"></label>
+        <input asp-items="Html.GetEnumSelectList<CinemaZ.Models.Types.MovieRatingType>()" asp-for="MovieRating" class="form-control" />
+        <span asp-validation-for="MovieRating" class="text-danger"></span>
     </div>
+     <div class="form-group">
+            <label asp-for="Picture" class="control-label"></label>
+            <div class="custom-file">
+                <input type="file" asp-for="Picture" class="custom-file-input" id="customFile">
+                <label class="custom-file-label" for="customFile">Choose file</label>
+            </div>
+            <span asp-validation-for="Picture" class="text-danger"></span>
+        </div>
     <div class="form-group">
         <label asp-for="DaysPremiere" class="control-label"></label>
         <input asp-for="DaysPremiere" class="form-control" />
