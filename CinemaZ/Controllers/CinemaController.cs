@@ -67,8 +67,8 @@ namespace CinemaZ.Controllers
 
 
                 room.Name = $"{i}:{cinema.Name}";
-                room.Cinema = cinema;                
-                
+                room.Cinema = cinema;
+
                 _sqlRoomService.CreateRoom(room);
 
                 newRooms.Add(room);

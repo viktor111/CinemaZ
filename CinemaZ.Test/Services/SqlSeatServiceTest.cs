@@ -1,9 +1,9 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-using CinemaZ.Models;
+﻿using CinemaZ.Models;
 using CinemaZ.Models.Types;
 using CinemaZ.Service;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace CinemaZ.Test.Services
 {
@@ -15,7 +15,7 @@ namespace CinemaZ.Test.Services
         public SqlSeatServiceTest()
         {
             _sqlSeatService = new SqlSeatService(_dbContext);
-          
+
         }
 
         [TestMethod]
@@ -32,7 +32,7 @@ namespace CinemaZ.Test.Services
 
             //Act
             room.Seats = _sqlSeatService.GenerateSeats(room);
-            
+
             _dbContext.Room.Add(room);
 
             //Assert
@@ -57,7 +57,7 @@ namespace CinemaZ.Test.Services
 
             //Act
             room.Seats = _sqlSeatService.GenerateSeats(room);
-            
+
             _dbContext.Room.Add(room);
 
             //Assert
@@ -80,13 +80,13 @@ namespace CinemaZ.Test.Services
 
             //Act
             room.Seats = _sqlSeatService.GenerateSeats(room);
-            
+
             _dbContext.Room.Add(room);
 
             //Assert
             List<Seat> seats = room.Seats.ToList();
 
-            Assert.AreEqual(RowType.A,seats[0].RowId);
+            Assert.AreEqual(RowType.A, seats[0].RowId);
             Assert.AreEqual(ColumnType.k, seats[0].ColumnId);
         }
     }

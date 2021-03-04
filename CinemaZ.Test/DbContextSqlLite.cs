@@ -1,9 +1,7 @@
-﻿using System;
-using System.Data.Common;
-using CinemaZ.Data;
+﻿using CinemaZ.Data;
 using Microsoft.Data.Sqlite;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Infrastructure;
+using System;
 
 namespace CinemaZ.Test
 {

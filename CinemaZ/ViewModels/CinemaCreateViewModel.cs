@@ -1,9 +1,4 @@
-﻿using CinemaZ.Models;
-using CinemaZ.Models.Types;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using CinemaZ.Models.Types;
 
 namespace CinemaZ.ViewModels
 {
@@ -13,7 +8,7 @@ namespace CinemaZ.ViewModels
 
         public string Name { get; set; }
 
-        public CityType City{ get; set; }
+        public CityType City { get; set; }
 
         public string Adress { get; set; }
 

@@ -1,10 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using CinemaZ.Models;
+﻿using CinemaZ.Models;
 using CinemaZ.Models.Types;
 using CinemaZ.Service;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace CinemaZ.Test.Services
 {
@@ -12,7 +12,7 @@ namespace CinemaZ.Test.Services
     public class SqlMovieServiceTest : DbContextSqlLite
     {
         private readonly ISqlMovieService _sqlMovieService;
-        
+
         public SqlMovieServiceTest()
         {
             _sqlMovieService = new SqlMovieService(_dbContext);
@@ -44,7 +44,7 @@ namespace CinemaZ.Test.Services
                 MovieRoom = new List<MovieRoom>(),
                 ReleaseDate = DateTime.Now,
             };
-            
+
             //Act
             _dbContext.Movie.Add(movie1);
             _dbContext.Movie.Add(movie2);
@@ -52,7 +52,7 @@ namespace CinemaZ.Test.Services
 
             //Assert
             List<Movie> movies = _sqlMovieService.ListMovies();
-            
+
             Assert.IsNotNull(movies);
             Assert.AreEqual(2, movies.Count);
         }
@@ -79,15 +79,15 @@ namespace CinemaZ.Test.Services
 
             //Assert
             Movie movieDb = _sqlMovieService.GetMovie(movie.Id);
-            
+
             Assert.IsNotNull(movieDb);
-            Assert.AreEqual(movie.Id,movieDb.Id);
-            Assert.AreEqual(movie.Premiere,movieDb.Premiere);
-            Assert.AreEqual(movie.Picture,movieDb.Picture);
-            Assert.AreEqual(movie.Category,movieDb.Category);
-            Assert.AreEqual(movie.Price,movieDb.Price);
-            Assert.AreEqual(movie.PremiereId,movieDb.PremiereId);
-            Assert.AreEqual(movie.MovieRoom,movieDb.MovieRoom);
+            Assert.AreEqual(movie.Id, movieDb.Id);
+            Assert.AreEqual(movie.Premiere, movieDb.Premiere);
+            Assert.AreEqual(movie.Picture, movieDb.Picture);
+            Assert.AreEqual(movie.Category, movieDb.Category);
+            Assert.AreEqual(movie.Price, movieDb.Price);
+            Assert.AreEqual(movie.PremiereId, movieDb.PremiereId);
+            Assert.AreEqual(movie.MovieRoom, movieDb.MovieRoom);
 
         }
 
@@ -133,7 +133,7 @@ namespace CinemaZ.Test.Services
                 MovieRating = MovieRatingType.A,
                 MovieRoom = new List<MovieRoom>(),
                 ReleaseDate = DateTime.Now,
-            };           
+            };
 
             //Act
             _dbContext.Movie.Add(movie);
@@ -156,13 +156,13 @@ namespace CinemaZ.Test.Services
 
             //Assert
             Movie movieDb = _dbContext.Movie.FirstOrDefault(m => m.Id == movie.Id);
-            
+
             Assert.IsNotNull(movieDb);
-            Assert.AreEqual(newMovie.Id,movieDb.Id);
-            Assert.AreEqual(newMovie.Premiere,movieDb.Premiere);
-            Assert.AreEqual(newMovie.Picture,movieDb.Picture);
-            Assert.AreEqual(newMovie.Category,movieDb.Category);
-            Assert.AreEqual(newMovie.Price,movieDb.Price);
+            Assert.AreEqual(newMovie.Id, movieDb.Id);
+            Assert.AreEqual(newMovie.Premiere, movieDb.Premiere);
+            Assert.AreEqual(newMovie.Picture, movieDb.Picture);
+            Assert.AreEqual(newMovie.Category, movieDb.Category);
+            Assert.AreEqual(newMovie.Price, movieDb.Price);
         }
 
         [TestMethod]
@@ -186,15 +186,15 @@ namespace CinemaZ.Test.Services
 
             //Assert
             Movie movieDb = _dbContext.Movie.FirstOrDefault(m => m.Id == movie.Id);
-            
+
             Assert.IsNotNull(movieDb);
-            Assert.AreEqual(movie.Id,movieDb.Id);
-            Assert.AreEqual(movie.Premiere,movieDb.Premiere);
-            Assert.AreEqual(movie.Picture,movieDb.Picture);
-            Assert.AreEqual(movie.Category,movieDb.Category);
-            Assert.AreEqual(movie.Price,movieDb.Price);
-            Assert.AreEqual(movie.PremiereId,movieDb.PremiereId);
-            Assert.AreEqual(movie.MovieRoom,movieDb.MovieRoom);
+            Assert.AreEqual(movie.Id, movieDb.Id);
+            Assert.AreEqual(movie.Premiere, movieDb.Premiere);
+            Assert.AreEqual(movie.Picture, movieDb.Picture);
+            Assert.AreEqual(movie.Category, movieDb.Category);
+            Assert.AreEqual(movie.Price, movieDb.Price);
+            Assert.AreEqual(movie.PremiereId, movieDb.PremiereId);
+            Assert.AreEqual(movie.MovieRoom, movieDb.MovieRoom);
         }
     }
 }

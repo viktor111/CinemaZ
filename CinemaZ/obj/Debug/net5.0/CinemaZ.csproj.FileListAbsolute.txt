@@ -879,7 +879,6 @@ D:\programming\c#\CinemaZ\CinemaZ\obj\Debug\net5.0\Razor\Views\Home\Privacy.csht
 D:\programming\c#\CinemaZ\CinemaZ\obj\Debug\net5.0\Razor\Views\Movie\AddMovieToRoom.cshtml.g.cs
 D:\programming\c#\CinemaZ\CinemaZ\obj\Debug\net5.0\Razor\Views\Movie\CreateMovie.cshtml.g.cs
 D:\programming\c#\CinemaZ\CinemaZ\obj\Debug\net5.0\Razor\Views\Movie\Index.cshtml.g.cs
-D:\programming\c#\CinemaZ\CinemaZ\obj\Debug\net5.0\Razor\Views\Room\Room.cshtml.g.cs
 D:\programming\c#\CinemaZ\CinemaZ\obj\Debug\net5.0\Razor\Views\Shared\Error.cshtml.g.cs
 D:\programming\c#\CinemaZ\CinemaZ\obj\Debug\net5.0\Razor\Views\Shared\_Layout.cshtml.g.cs
 D:\programming\c#\CinemaZ\CinemaZ\obj\Debug\net5.0\Razor\Views\Shared\_LoginPartial.cshtml.g.cs
@@ -892,3 +891,4 @@ D:\programming\c#\CinemaZ\CinemaZ\obj\Debug\net5.0\CinemaZ.Views.pdb
 D:\programming\c#\CinemaZ\CinemaZ\obj\Debug\net5.0\CinemaZ.csproj.CopyComplete
 D:\programming\c#\CinemaZ\CinemaZ\obj\Debug\net5.0\CinemaZ.genruntimeconfig.cache
 D:\programming\c#\CinemaZ\CinemaZ\obj\Debug\net5.0\Razor\Views\Movie\ListMovies.cshtml.g.cs
+D:\programming\c#\CinemaZ\CinemaZ\obj\Debug\net5.0\Razor\Views\Room\RoomDetails.cshtml.g.cs

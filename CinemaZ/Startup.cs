@@ -1,8 +1,5 @@
-using System;
-using System.Threading.Tasks;
 using CinemaZ.Data;
 using CinemaZ.Helpers;
-using CinemaZ.Models;
 using CinemaZ.Service;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -11,6 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using System;
 
 namespace CinemaZ
 {
@@ -28,11 +26,12 @@ namespace CinemaZ
         {
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlServer(
-                    Configuration.GetConnectionString("DefaultConnection")));
+                    Configuration.GetConnectionString("Ip")));
 
             services.AddDatabaseDeveloperPageExceptionFilter();
 
-            services.AddDefaultIdentity<IdentityUser>(options => {
+            services.AddDefaultIdentity<IdentityUser>(options =>
+            {
                 options.Password.RequireDigit = false;
                 options.Password.RequireUppercase = false;
                 options.Password.RequireNonAlphanumeric = false;
@@ -73,7 +72,7 @@ namespace CinemaZ
             app.UseRouting();
 
             //TestService(serviceProvider).Wait();
-            
+
             app.UseAuthentication();
             app.UseAuthorization();
 

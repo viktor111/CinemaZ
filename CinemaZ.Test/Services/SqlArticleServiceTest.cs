@@ -1,9 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using CinemaZ.Models;
+﻿using CinemaZ.Models;
 using CinemaZ.Service;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace CinemaZ.Test.Services
 {
@@ -11,7 +11,7 @@ namespace CinemaZ.Test.Services
     public class SqlArticleServiceTest : DbContextSqlLite
     {
         private readonly ISqlArticleService _sqlArticleService;
-        
+
         public SqlArticleServiceTest()
         {
             _sqlArticleService = new SqlArticleService(_dbContext);
@@ -33,7 +33,7 @@ namespace CinemaZ.Test.Services
                 Title = "rqweqwer",
                 Views = 1012310,
             };
-            
+
             //Act
             _dbContext.Article.Add(article1);
             _dbContext.Article.Add(article2);
@@ -41,7 +41,7 @@ namespace CinemaZ.Test.Services
 
             //Assert
             List<Article> articles = _sqlArticleService.ListArticles();
-            
+
             Assert.IsNotNull(articles);
             Assert.AreEqual(2, articles.Count);
         }
@@ -63,7 +63,7 @@ namespace CinemaZ.Test.Services
 
             //Assert
             Article articleDb = _sqlArticleService.GetArticle(article.Id);
-            
+
             Assert.IsNotNull(article);
             Assert.AreEqual(article.Id, articleDb.Id);
             Assert.AreEqual(article.Text, articleDb.Text);
@@ -85,7 +85,7 @@ namespace CinemaZ.Test.Services
 
             _dbContext.Article.Add(article);
             _dbContext.SaveChanges();
-            
+
             Article article2 = new()
             {
                 Id = article.Id,
@@ -100,7 +100,7 @@ namespace CinemaZ.Test.Services
 
             //Assert
             Article articleDb = _dbContext.Article.FirstOrDefault(a => a.Id == article.Id);
-            
+
             Assert.AreEqual(article2.Id, articleDb.Id);
             Assert.AreEqual(article2.Text, articleDb.Text);
             Assert.AreEqual(article2.Title, articleDb.Title);
@@ -129,7 +129,7 @@ namespace CinemaZ.Test.Services
             //Assert
             List<Article> articles = _dbContext.Article.ToList();
 
-            Assert.AreEqual(0,articles.Count);
+            Assert.AreEqual(0, articles.Count);
         }
 
         [TestMethod]
@@ -149,8 +149,8 @@ namespace CinemaZ.Test.Services
 
             //Assert
             Article actual = _dbContext.Article.FirstOrDefault(a => a.Id == expected.Id);
-            
-            Assert.AreEqual(expected,actual);
+
+            Assert.AreEqual(expected, actual);
         }
     }
 }

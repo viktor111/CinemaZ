@@ -13,21 +13,21 @@ namespace CinemaZ.Models
         public int Id { get; set; }
 
         // ToDo: Add movie lenght prop
-        
+
         public string Name { get; set; }
 
         public string Picture { get; set; }
 
         public MovieRatingType MovieRating { get; set; }
 
-        public int AllowedAge 
-        { 
-            set 
+        public int AllowedAge
+        {
+            set
             {
                 switch (MovieRating)
-                {                    
+                {
                     case MovieRatingType.A:
-                    AllowedAge = 1;
+                        AllowedAge = 1;
                         return;
                     case MovieRatingType.B:
                         AllowedAge = 12;
@@ -42,7 +42,7 @@ namespace CinemaZ.Models
                         AllowedAge = 1;
                         return;
                 }
-            } 
+            }
         }
 
         public CategoryType Category { get; set; }

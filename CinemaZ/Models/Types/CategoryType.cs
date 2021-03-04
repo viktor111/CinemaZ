@@ -3,8 +3,8 @@
     public enum CategoryType
     {
         Comedy,
-        Horror, 
-        Drama, 
+        Horror,
+        Drama,
         Thriller,
         Action,
         Crime,

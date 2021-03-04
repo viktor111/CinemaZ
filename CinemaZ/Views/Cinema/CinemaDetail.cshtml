@@ -5,6 +5,6 @@
 <h1>Cinema Name: @Model.Name</h1>
 @foreach (var room in Model.Rooms)
 {
-    <a asp-controller="Room" asp-action="Room" asp-route-id="@room.Id"><p>Name: @room.Name</p></a>
+    <a asp-controller="Room" asp-action="RoomDetails" asp-route-id="@room.Id"><p>Name: @room.Name</p></a>
     <p>Id: @room.Id</p>
 }

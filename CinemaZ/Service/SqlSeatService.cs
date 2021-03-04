@@ -30,7 +30,7 @@ namespace CinemaZ.Service
 
                 seat.Room = room;
                 seat.RowId = (RowType)Enum.Parse(typeof(RowType), row);
-                
+
                 for (int j = 0; j < cols.Length; j++)
                 {
                     string col = cols[j];

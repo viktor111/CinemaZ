@@ -1,10 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using CinemaZ.Models;
+﻿using CinemaZ.Models;
 using CinemaZ.Models.Types;
 using CinemaZ.Service;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace CinemaZ.Test.Services
 {
@@ -129,7 +128,7 @@ namespace CinemaZ.Test.Services
             //Assert
             List<Room> rooms = _sqlCinemaService.ListRooms(cinemaDto);
             int singleRoomId = rooms[0].Id;
-            
+
             Assert.IsNotNull(rooms);
             Assert.AreEqual(singleRoomId, cinemaDto.Id);
         }
@@ -173,7 +172,7 @@ namespace CinemaZ.Test.Services
 
             _sqlCinemaService.CreateCinema(cinemaDto);
 
-            Cinema newCinema= new()
+            Cinema newCinema = new()
             {
                 Id = 1,
                 Adress = "Some address 2",
@@ -188,7 +187,7 @@ namespace CinemaZ.Test.Services
 
             //Assert
             Cinema cinema = _sqlCinemaService.GetCinema(newCinema.Id);
-            
+
             Assert.AreEqual(newCinema.Id, cinema.Id);
             Assert.AreEqual(newCinema.Adress, cinema.Adress);
             Assert.AreEqual(newCinema.City, cinema.City);
@@ -196,7 +195,7 @@ namespace CinemaZ.Test.Services
             Assert.AreEqual(newCinema.Rooms, cinema.Rooms);
             Assert.AreEqual(newCinema.TimeClose, cinema.TimeClose);
         }
-        
+
         [TestMethod]
         public void GetCinema_ShouldGetCinema()
         {
@@ -215,10 +214,10 @@ namespace CinemaZ.Test.Services
 
             //Assert
             Cinema cinemaGet = _sqlCinemaService.GetCinema(cinemaDto.Id);
-            
+
             Assert.AreEqual(cinemaDto, cinemaGet);
         }
-        
+
         [TestMethod]
         public void CreateCinema_ShouldGenerateId()
         {
@@ -238,7 +237,7 @@ namespace CinemaZ.Test.Services
             //Assert
             Assert.AreNotEqual(0, cinemaDto.Id);
         }
-        
+
         [TestMethod]
         public void CreateCinema_ShouldPersist()
         {

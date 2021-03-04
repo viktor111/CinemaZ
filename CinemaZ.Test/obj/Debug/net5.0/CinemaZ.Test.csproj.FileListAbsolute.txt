@@ -1040,3 +1040,7 @@ D:\programming\c#\CinemaZ\CinemaZ.Test\bin\Debug\net5.0\CinemaZ.dll
 D:\programming\c#\CinemaZ\CinemaZ.Test\bin\Debug\net5.0\CinemaZ.pdb
 D:\programming\c#\CinemaZ\CinemaZ.Test\obj\Debug\net5.0\CinemaZ.Test.csproj.CopyComplete
 D:\programming\c#\CinemaZ\CinemaZ.Test\obj\Debug\net5.0\CinemaZ.Test.genruntimeconfig.cache
+D:\programming\c#\CinemaZ\CinemaZ.Test\bin\Debug\net5.0\CinemaZ.StaticWebAssets.xml
+D:\programming\c#\CinemaZ\CinemaZ.Test\bin\Debug\net5.0\CinemaZ.deps.json
+D:\programming\c#\CinemaZ\CinemaZ.Test\bin\Debug\net5.0\CinemaZ.runtimeconfig.json
+D:\programming\c#\CinemaZ\CinemaZ.Test\bin\Debug\net5.0\CinemaZ.runtimeconfig.dev.json

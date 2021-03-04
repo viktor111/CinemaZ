@@ -1,7 +1,7 @@
-﻿using System.Linq;
-using CinemaZ.Data;
+﻿using CinemaZ.Data;
 using CinemaZ.Models;
 using Microsoft.EntityFrameworkCore;
+using System.Linq;
 
 namespace CinemaZ.Service
 {
@@ -20,7 +20,7 @@ namespace CinemaZ.Service
             if (roomDb is not null)
             {
                 MovieRoom movieRoomDb = roomDb.MovieRoom.FirstOrDefault(mr => mr.RoomId == movieRoom.RoomId);
-            
+
                 roomDb.MovieRoom.Add(new MovieRoom
                 {
                     MovieId = movieRoom.MovieId
@@ -30,7 +30,7 @@ namespace CinemaZ.Service
             }
 
             _dbContext.SaveChanges();
-            
+
             return new MovieRoom();
         }
     }

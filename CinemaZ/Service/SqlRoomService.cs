@@ -20,7 +20,7 @@ namespace CinemaZ.Service
         public Room CreateRoom(Room room)
         {
             SqlSeatService sqlSeatService = new SqlSeatService(_dbContext);
-            
+
             List<Seat> newSeats = sqlSeatService.GenerateSeats(room);
 
             room.Seats = newSeats;
@@ -42,7 +42,7 @@ namespace CinemaZ.Service
         public Room EdditRoom(Room room)
         {
             Room roomToEdit = _dbContext.Room.FirstOrDefault(r => r.Id == room.Id);
-    
+
             roomToEdit.MovieRoom = room.MovieRoom;
             roomToEdit.Name = room.Name;
             roomToEdit.Seats = room.Seats;

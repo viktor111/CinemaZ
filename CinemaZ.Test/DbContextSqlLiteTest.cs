@@ -1,5 +1,5 @@
-﻿using System.Threading.Tasks;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System.Threading.Tasks;
 
 namespace CinemaZ.Test
 {
@@ -7,9 +7,9 @@ namespace CinemaZ.Test
     public class DbContextSqlLiteTest : DbContextSqlLite
     {
         [TestMethod]
-        public async Task  DatabaseIsAvailableAndCanBeConnectedTo()
+        public async Task DatabaseIsAvailableAndCanBeConnectedTo()
         {
-            Assert.IsTrue( await _dbContext.Database.CanConnectAsync());
+            Assert.IsTrue(await _dbContext.Database.CanConnectAsync());
         }
     }
 }

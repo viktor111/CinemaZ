@@ -1,13 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using CinemaZ.Controllers;
-using CinemaZ.Models;
-using CinemaZ.Models.Types;
+﻿using CinemaZ.Controllers;
 using CinemaZ.Service;
-using CinemaZ.ViewModels;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace CinemaZ.Test.Controllers
@@ -31,8 +25,8 @@ namespace CinemaZ.Test.Controllers
 
             _movieController = new MovieController
             (
-                _sqlMovieService, 
-                _sqlPremiereService, 
+                _sqlMovieService,
+                _sqlPremiereService,
                 _sqlRoomService,
                 _sqlMovieRoomService,
                 _webHostEnvironment
@@ -40,18 +34,10 @@ namespace CinemaZ.Test.Controllers
         }
 
         [TestMethod]
-        public void CreateMovie_ShouldHaveOKStatusCode()
-        {
-            ViewResult result = _movieController.CreateMovie() as ViewResult;
-            
-            Assert.AreEqual(200, result.StatusCode);
-        }
-
-        [TestMethod]
         public void CreateMovie_ShouldReturnView()
         {
             ViewResult result = _movieController.Index() as ViewResult;
-            
+
             Assert.IsInstanceOfType(result, typeof(ViewResult));
         }
     }

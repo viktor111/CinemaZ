@@ -1,11 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using CinemaZ.Controllers;
+﻿using CinemaZ.Controllers;
 using CinemaZ.Models;
 using CinemaZ.Models.Types;
 using CinemaZ.Service;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System.Collections.Generic;
 
 namespace CinemaZ.Test.Controllers
 {
@@ -56,9 +55,10 @@ namespace CinemaZ.Test.Controllers
             _sqlRoomService.CreateRoom(room);
 
             //Assert
-            ViewResult result = _roomController.Room(room.Id) as ViewResult;
+            ViewResult result = _roomController.RoomDetails(room.Id) as ViewResult;
             Room model = result.Model as Room;
 
+            Assert.IsNotNull(model);
             Assert.IsInstanceOfType(result, typeof(ViewResult));
             Assert.IsInstanceOfType(model, typeof(Room));
         }

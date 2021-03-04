@@ -1,10 +1,9 @@
-﻿using System;
+﻿using CinemaZ.Models;
+using CinemaZ.Service;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System;
 using System.Collections.Generic;
 using System.Linq;
-using CinemaZ.Models;
-using CinemaZ.Service;
-using Microsoft.Data.SqlClient;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace CinemaZ.Test.Services
 {
@@ -12,7 +11,7 @@ namespace CinemaZ.Test.Services
     public class SqlPremiereServiceTest : DbContextSqlLite
     {
         private readonly ISqlPremiereService _sqlPremiereService;
-        
+
         public SqlPremiereServiceTest()
         {
             _sqlPremiereService = new SqlPremiereService(_dbContext);
@@ -29,7 +28,7 @@ namespace CinemaZ.Test.Services
                 EndDate = DateTime.Now,
                 PremiereDate = DateTime.Now
             };
-            
+
             Premiere premiere2 = new()
             {
                 Discount = 20M,
@@ -41,12 +40,12 @@ namespace CinemaZ.Test.Services
             //Act
             _dbContext.Premiere.Add(premiere1);
             _dbContext.Premiere.Add(premiere2);
-            
+
             _dbContext.SaveChanges();
 
             //Assert
             List<Premiere> premieres = _sqlPremiereService.ListPremieres();
-            
+
             Assert.IsNotNull(premieres);
             Assert.AreEqual(2, premieres.Count);
         }
@@ -65,12 +64,12 @@ namespace CinemaZ.Test.Services
 
             //Act
             _dbContext.Premiere.Add(premiere);
-            
+
             _dbContext.SaveChanges();
 
             //Assert
             Premiere premiereDb = _sqlPremiereService.GetPremiere(premiere.Id);
-            
+
             Assert.IsNotNull(premiereDb);
             Assert.AreEqual(premiere.Id, premiereDb.Id);
             Assert.AreEqual(premiere.Discount, premiere.Discount);
@@ -88,11 +87,11 @@ namespace CinemaZ.Test.Services
                 PremiereDate = DateTime.Now
             };
 
-           
+
 
             //Act
             _dbContext.Premiere.Add(premiere);
-            
+
             _dbContext.SaveChanges();
 
             Premiere premiere2 = new()
@@ -108,7 +107,7 @@ namespace CinemaZ.Test.Services
 
             //Assert
             Premiere premiereDb = _dbContext.Premiere.FirstOrDefault(p => p.Id == premiere.Id);
-            
+
             Assert.AreEqual(premiere2.Discount, premiereDb.Discount);
             Assert.AreEqual(premiere2.Id, premiereDb.Id);
         }
@@ -127,7 +126,7 @@ namespace CinemaZ.Test.Services
 
             //Act
             _dbContext.Premiere.Add(premiere);
-            
+
             _dbContext.SaveChanges();
 
             _sqlPremiereService.DeletePremiere(premiere);
@@ -135,7 +134,7 @@ namespace CinemaZ.Test.Services
             //Assert
 
             Premiere premiereDb = _dbContext.Premiere.FirstOrDefault(p => p.Id == premiere.Id);
-            
+
             Assert.IsNull(premiereDb);
         }
 

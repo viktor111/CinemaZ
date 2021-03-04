@@ -19,7 +19,8 @@ namespace CinemaZ.Controllers
             _sqlRoomService = sqlRoomService;
         }
 
-        public IActionResult Room(int id)
+
+        public IActionResult RoomDetails(int id)
         {
             Room room = _sqlRoomService.GetRoom(id);
             room.Seats = _sqlRoomService.SeatsForSingleRoom(room);

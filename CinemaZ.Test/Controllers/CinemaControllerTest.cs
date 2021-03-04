@@ -1,11 +1,11 @@
-﻿using System.Collections.Generic;
-using CinemaZ.Controllers;
+﻿using CinemaZ.Controllers;
 using CinemaZ.Models;
 using CinemaZ.Models.Types;
 using CinemaZ.Service;
 using CinemaZ.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System.Collections.Generic;
 
 namespace CinemaZ.Test.Controllers
 {
@@ -62,7 +62,7 @@ namespace CinemaZ.Test.Controllers
             ViewResult result = _cinemaController.CinemaDetail(cinema1.Id) as ViewResult;
             CinemaDetailsModel model = result.Model as CinemaDetailsModel;
 
-            Assert.AreEqual(cinema1.Name,model.Name);
+            Assert.AreEqual(cinema1.Name, model.Name);
             Assert.AreEqual(cinema1.TimeClose, model.TimeClose);
         }
 
@@ -150,7 +150,7 @@ namespace CinemaZ.Test.Controllers
         public void ListArticles_ShouldReturnView()
         {
             ViewResult result = _cinemaController.ListCinema() as ViewResult;
-            
+
             Assert.IsInstanceOfType(result, typeof(ViewResult));
         }
 
@@ -158,7 +158,7 @@ namespace CinemaZ.Test.Controllers
         public void ListArticles_ShouldHaveModelCinemaListViewModel()
         {
             ViewResult result = _cinemaController.ListCinema() as ViewResult;
-            
+
             Assert.IsInstanceOfType(result.Model, typeof(CinemaListViewModel));
         }
     }

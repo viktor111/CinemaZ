@@ -43,7 +43,7 @@ namespace CinemaZ.Data
                 .HasForeignKey(e => e.RoomId);
 
             // Many to many Movie room
-            modelBuilder.Entity<MovieRoom>().HasKey(e => new {e.MovieId, e.RoomId });
+            modelBuilder.Entity<MovieRoom>().HasKey(e => new { e.MovieId, e.RoomId });
 
             modelBuilder.Entity<MovieRoom>()
                 .HasOne(e => e.Movie)
@@ -56,8 +56,8 @@ namespace CinemaZ.Data
                 .HasForeignKey(e => e.RoomId);
         }
 
-        public DbSet<Cinema> Cinema {get; set; }
-        public DbSet<Movie> Movie {get; set; }
+        public DbSet<Cinema> Cinema { get; set; }
+        public DbSet<Movie> Movie { get; set; }
         public DbSet<Room> Room { get; set; }
         public DbSet<Seat> Seat { get; set; }
         public DbSet<Article> Article { get; set; }
